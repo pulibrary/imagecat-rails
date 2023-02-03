@@ -1,0 +1,5 @@
+name: imagecat
+services:
+  database:
+    type: postgres:13
+    portforward: true
