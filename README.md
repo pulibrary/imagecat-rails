@@ -8,3 +8,9 @@ Records are arranged alphabetically with authors, titles, and subjects interfile
 ## System dependencies
 
 This project uses [asdf](https://asdf-vm.com/) (see .tool-versions for the current ruby version)
+
+`bundle install` will install the dependencies for this project. 
+
+## How to start application locally 
+
+Run the `bin/rails server` command, then in a browser connect to [localhost:3000](http://localhost:3000/)
