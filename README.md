@@ -14,3 +14,7 @@ This project uses [asdf](https://asdf-vm.com/) (see .tool-versions for the curre
 ## How to start application locally 
 
 Run the `bin/rails server` command, then in a browser connect to [localhost:3000](http://localhost:3000/)
+
+## How to run the test suite
+
+`bundle exec rspec spec`
