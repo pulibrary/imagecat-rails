@@ -11,17 +11,7 @@ commands:
           key: *gem_key
           paths:
             - ./vendor/bundle
-      - restore_cache:
-          name: Restore Yarn Package Cache
-          key: &yarn_key rails_template-yarn-cimg-{{ checksum "yarn.lock" }}
-      - run:
-          name: Install NPM Dependencies via Yarn
-          command: yarn install --frozen-lockfile
-      - save_cache:
-          name: Save Yarn Package Cache
-          key: *yarn_key
-          paths:
-            - ~/.cache/yarn
+
 orbs:
   browser-tools: circleci/browser-tools@1.4.1
 jobs:
@@ -51,23 +41,6 @@ jobs:
           name: Run rubocop
           command: bundle exec rubocop
 
-  eslint:
-    # We don't actually need any of the ruby environment to lint JS... but use what we have for now.
-    working_directory: ~/rails_template
-    docker:
-      - image: cimg/ruby:3.2.0-browsers
-        environment:
-          RAILS_ENV: test
-    steps:
-      - attach_workspace:
-          at: '~/rails_template'
-      - install_dependencies
-      - run:
-          name: Run eslint
-          # Quote directory globs so not they are expanded by shell,
-          # and every file will be checked, regardless of extension.
-          command: yarn run eslint 'app/assets/javascripts/**' 'app/javascript/**'
-
   test:
     working_directory: *root
     docker:
@@ -89,7 +62,7 @@ jobs:
       - run: bundle exec rake db:migrate RAILS_ENV=test
       - run:
           name: Run Rspec
-          command: COVERALLS_REPO_TOKEN=$COVERALLS_REPO_TOKEN bundle exec rspec
+          command: bundle exec rspec
       - store_artifacts:
           path: coverage
       - store_artifacts:
