@@ -7,6 +7,8 @@ Records are arranged alphabetically with authors, titles, and subjects interfile
 
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/pulibrary/imagecat-rails/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/pulibrary/imagecat-rails/tree/main)
 
+[![Rails Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop/rubocop-rails)
+
 ## System dependencies
 
 This project uses [asdf](https://asdf-vm.com/) (see .tool-versions for the current ruby version)
