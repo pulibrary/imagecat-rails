@@ -76,10 +76,9 @@ workflows:
       - test:
           requires:
             - build
-      # to be implemented as part of rubocop issue #13
-      # - rubocop:
-      #     requires:
-      #       - build
+      - rubocop:
+          requires:
+            - build
 
   nightly:
     triggers:
