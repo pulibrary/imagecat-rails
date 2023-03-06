@@ -53,6 +53,9 @@ gem 'bootsnap', require: false
 group :development, :test do
   gem 'coveralls_reborn', '~> 0.27.0', require: false
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem 'capistrano', require: false
+  gem 'capistrano-passenger', require: false
+  gem 'capistrano-rails', '~> 1.4', require: false
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'pry'
   gem 'pry-byebug'
