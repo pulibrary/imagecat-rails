@@ -9,6 +9,8 @@ Records are arranged alphabetically with authors, titles, and subjects interfile
 
 [![Rails Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop/rubocop-rails)
 
+[![Coverage Status](https://coveralls.io/repos/github/pulibrary/imagecat-rails/badge.svg?branch=main)](https://coveralls.io/github/pulibrary/imagecat-rails?branch=main)
+
 ## System dependencies
 
 This project uses [asdf](https://asdf-vm.com/) (see .tool-versions for the current ruby version)

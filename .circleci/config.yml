@@ -14,6 +14,7 @@ commands:
 
 orbs:
   browser-tools: circleci/browser-tools@1.4.1
+  coveralls: coveralls/coveralls@1.0.6
 jobs:
   build:
     working_directory: ~/rails_template
@@ -67,6 +68,8 @@ jobs:
           path: coverage
       - store_artifacts:
           path: /home/circleci/rails_template/tmp/screenshots
+      - coveralls/upload:
+          path_to_lcov: ./coverage/lcov.info
 
 workflows:
   version: 2
