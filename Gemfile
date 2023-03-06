@@ -51,10 +51,15 @@ gem 'bootsnap', require: false
 # gem "image_processing", "~> 1.2"
 
 group :development, :test do
+  gem 'coveralls_reborn', '~> 0.27.0', require: false
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
+  gem 'pry'
+  gem 'pry-byebug'
   gem 'rspec-rails'
   gem 'rubocop-rails', require: false
+  gem 'simplecov'
+  gem 'simplecov-lcov', '~> 0.8.0'
 end
 
 group :development do
