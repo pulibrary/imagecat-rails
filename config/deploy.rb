@@ -10,5 +10,5 @@ set :linked_dirs, %w[log public/system public/assets]
 
 set :branch, ENV['BRANCH'] || 'main'
 
-set :deploy_to, '/opt/imagecat_rails'
+set :deploy_to, '/opt/imagecat-rails'
 # set :ssh_options, {verify_host_key: :never}
