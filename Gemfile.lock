@@ -277,9 +277,9 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap
-  capistrano
+  capistrano (~> 3.10)
   capistrano-passenger
-  capistrano-rails (~> 1.4)
+  capistrano-rails (~> 1.6)
   coveralls_reborn (~> 0.27.0)
   debug
   importmap-rails
