@@ -145,6 +145,8 @@ GEM
       racc (~> 1.4)
     nokogiri (1.14.1-x86_64-darwin)
       racc (~> 1.4)
+    nokogiri (1.14.1-x86_64-linux)
+      racc (~> 1.4)
     parallel (1.22.1)
     parser (3.2.1.0)
       ast (~> 2.4.1)
@@ -274,12 +276,13 @@ PLATFORMS
   arm64-darwin-21
   x86_64-darwin-20
   x86_64-darwin-22
+  x86_64-linux
 
 DEPENDENCIES
   bootsnap
-  capistrano
+  capistrano (~> 3.10)
   capistrano-passenger
-  capistrano-rails (~> 1.4)
+  capistrano-rails (~> 1.6)
   coveralls_reborn (~> 0.27.0)
   debug
   importmap-rails
