@@ -56,6 +56,7 @@ group :development, :test do
   gem 'capistrano', '~> 3.10', require: false
   gem 'capistrano-passenger', require: false
   gem 'capistrano-rails', '~> 1.6', require: false
+  gem 'capistrano-rails-console', require: false
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'pry'
   gem 'pry-byebug'
