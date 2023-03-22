@@ -1,0 +1,18 @@
+# frozen_string_literal: true
+
+require 'rails_helper'
+
+RSpec.describe GuideCard, type: :model do
+  it 'has the GuideCard fields' do
+    guidecard = GuideCard.new
+    guidecard.id = 2
+    guidecard.heading = 'A'
+    guidecard.sortid = '2.5'
+    guidecard.path = '14/0001/B4491'
+    guidecard.save
+    expect(guidecard.id).to eq 2
+    expect(guidecard.heading).to eq 'A'
+    expect(guidecard.sortid).to eq '2.5'
+    expect(guidecard.path).to eq '14/0001/B4491'
+  end
+end
