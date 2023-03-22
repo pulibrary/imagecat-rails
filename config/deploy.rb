@@ -13,7 +13,7 @@ set :branch, ENV['BRANCH'] || 'main'
 set :deploy_to, '/opt/imagecat-rails'
 # set :ssh_options, {verify_host_key: :never}
 
-desc "Write the current version to public/version.txt"
+desc 'Write the current version to public/version.txt'
 task :write_version do
   on roles(:app), in: :sequence do
     within repo_path do
@@ -21,4 +21,4 @@ task :write_version do
     end
   end
 end
-after "deploy:log_revision", "write_version"
+after 'deploy:log_revision', 'write_version'
