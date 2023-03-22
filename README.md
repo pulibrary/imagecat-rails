@@ -33,3 +33,8 @@ Run the `bin/rails server` command, then in a browser connect to [localhost:3000
 
 `bundle exec rspec spec`
 
+## Deploying 
+
+Currently, this application can not be deployed with pulbot. You must use Capistrano on the command line. 
+
+`BRANCH=branch_name bundle exec cap staging deploy`
