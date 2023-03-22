@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'guide_cards/index'
+  get 'guide_cards/show'
   resources :guide_cards
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
