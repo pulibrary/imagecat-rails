@@ -5,6 +5,8 @@ require 'csv'
 class GuideCardLoadingService
   # location of source data for GuideCards
   def csv_location
+    return Rails.root.join('spec', 'fixtures', 'guide_card_fixture.csv') if Rails.env.test?
+
     Rails.root.join('data', 'dbo-guides', 'dbo.Guides.31756.csv')
   end
 
