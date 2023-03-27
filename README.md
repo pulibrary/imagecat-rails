@@ -38,3 +38,9 @@ Run the `bin/rails server` command, then in a browser connect to [localhost:3000
 Currently, this application can not be deployed with pulbot. You must use Capistrano on the command line. 
 
 `BRANCH=branch_name bundle exec cap staging deploy`
+
+## How to load data 
+
+We want to load in CSV files that contain GuideCards and SubGuides data, which was exported from the legacy version of this application. The data lives in the `data` folder of this project. 
+
+To import the GuideCards records: `rake import:import_guide_cards`
