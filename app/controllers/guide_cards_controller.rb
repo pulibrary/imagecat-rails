@@ -4,5 +4,7 @@
 class GuideCardsController < ApplicationController
   def index; end
 
-  def show; end
+  def show
+    @guide_card = GuideCard.find(params[:id])
+  end
 end

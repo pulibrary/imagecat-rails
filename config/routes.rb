@@ -2,7 +2,7 @@
 
 Rails.application.routes.draw do
   get 'guide_cards/index'
-  get 'guide_cards/show'
+  get 'guide_cards/:id', to: 'guide_cards#show'
   resources :guide_cards
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
