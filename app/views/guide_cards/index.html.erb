@@ -3,5 +3,6 @@
 
 
 <% @guide_cards.each do |card| %>
-<h2> <%= card.heading %> </h2>
+<h2> <%= link_to card.heading, guide_card_path(card.id) %> </h2>
 <% end %>
+
