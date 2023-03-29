@@ -2,4 +2,6 @@
 <p>Find me in app/views/guide_cards/index.html.erb</p>
 
 
-<%= @gc=GuideCard.all %>
+<% @guide_cards.each do |card| %>
+<h2> <%= card.heading %> </h2>
+<% end %>
