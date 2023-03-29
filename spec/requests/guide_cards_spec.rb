@@ -10,6 +10,9 @@ RSpec.describe 'GuideCards', type: :request do
     it 'returns http success' do
       get '/guide_cards/index'
       expect(response).to have_http_status(:success)
+      expect(response.body).to include('AALAS')
+      expect(response.body).to include('3.5')
+      expect(response.body).to include('14/0001/A1002')
     end
   end
 
