@@ -10,6 +10,7 @@ RSpec.describe 'GuideCards', type: :request do
     it 'returns http success' do
       get '/guide_cards/index'
       expect(response).to have_http_status(:success)
+      # expect(response.body).to include('GuideCardLoadingService')
     end
   end
 

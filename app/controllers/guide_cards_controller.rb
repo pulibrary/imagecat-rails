@@ -2,7 +2,9 @@
 
 # controller for GuideCards
 class GuideCardsController < ApplicationController
-  def index; end
+  def index
+    @guide_card = GuideCard.all
+  end
 
   def show
     @guide_card = GuideCard.find(params[:id])
