@@ -9,4 +9,16 @@ class SubGuideLoadingService
 
     Rails.root.join('data', 'dbo-subguides', 'dbo.Subguides.17917.csv')
   end
+
+  def import
+    sub_guide_card_data = CSV.parse(File.read(csv_location), headers: true)
+    sub_guide_card_data.each do |card|
+      sgc = SubGuideCard.new
+      sgc.id = card[0]
+      sgc.heading = card[1]
+      sgc.sortid = card[2]
+      sgc.path = card[3]
+      sgc.save
+    end
+  end
 end
