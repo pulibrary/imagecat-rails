@@ -17,8 +17,7 @@ class SubGuideLoadingService
       sgc.id = card[0]
       sgc.heading = card[1]
       sgc.sortid = card[2]
-      sgc.parentid = card[3]
-      sgc.path = card[4]
+      sgc.path = card[3]
       sgc.save
     end
   end
