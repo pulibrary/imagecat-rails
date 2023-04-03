@@ -12,13 +12,20 @@ class SubGuideLoadingService
 
   def import
     sub_guide_card_data = CSV.parse(File.read(csv_location), headers: true)
-    sub_guide_card_data.each do |card|
-      sgc = SubGuideCard.new
-      sgc.id = card[0]
-      sgc.heading = card[1]
-      sgc.sortid = card[2]
-      sgc.path = card[3]
-      sgc.save
+    sub_guide_card_data.each do |entry|
+      import_sub_guide_card(entry)
     end
+  end
+
+  private
+
+  def import_sub_guide_card(card)
+    sgc = SubGuideCard.new
+    sgc.id = card[0]
+    sgc.heading = card[1]
+    sgc.sortid = card[2]
+    sgc.parentid = card[3]
+    sgc.path = card[4]
+    sgc.save
   end
 end
