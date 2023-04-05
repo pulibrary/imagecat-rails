@@ -3,11 +3,11 @@
 require 'csv'
 # service for loading SubGuide cards data
 class SubGuideLoadingService
-  # location of source data for SubGuides
-  def csv_location
-    return Rails.root.join('spec', 'fixtures', 'subguide_card_fixture.csv') if Rails.env.test?
+  attr_reader :csv_location
 
-    Rails.root.join('data', 'dbo-subguides', 'dbo.Subguides.17917.csv')
+  # @param csv_location [String] location of source data for SubGuideCards
+  def initialize(csv_location: nil)
+    @csv_location = csv_location || Rails.root.join('data', 'dbo-subguides', 'dbo.Subguides.17917.csv')
   end
 
   def import

@@ -3,11 +3,11 @@
 require 'csv'
 # service for loading GuideCard data
 class GuideCardLoadingService
-  # location of source data for GuideCards
-  def csv_location
-    return Rails.root.join('spec', 'fixtures', 'guide_card_fixture.csv') if Rails.env.test?
+  attr_reader :csv_location
 
-    Rails.root.join('data', 'dbo-guides', 'dbo.Guides.31756.csv')
+  # @param csv_location [String] location of source data for GuideCards
+  def initialize(csv_location: nil)
+    @csv_location = csv_location || Rails.root.join('data', 'dbo-guides', 'dbo.Guides.31756.csv')
   end
 
   def import

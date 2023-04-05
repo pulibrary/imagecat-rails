@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 describe SubGuideLoadingService do
-  let(:sgls) { described_class.new }
+  let(:sgls) { described_class.new(csv_location: Rails.root.join('spec', 'fixtures', 'subguide_card_fixture.csv')) }
   it 'can instantiate' do
     expect(sgls).to be_instance_of described_class
   end
