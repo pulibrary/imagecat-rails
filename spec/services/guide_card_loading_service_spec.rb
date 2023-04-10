@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 describe GuideCardLoadingService do
-  let(:gcls) { described_class.new }
+  let(:gcls) { described_class.new(csv_location: Rails.root.join('spec', 'fixtures', 'guide_card_fixture.csv')) }
   it 'can instantiate' do
     expect(gcls).to be_instance_of described_class
   end
