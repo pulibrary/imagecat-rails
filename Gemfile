@@ -29,7 +29,7 @@ gem 'stimulus-rails'
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem 'jbuilder'
 
-# Use vite as a JavaScript build tool 
+# Use vite as a JavaScript build tool
 gem 'vite_rails'
 
 # Use Redis adapter to run Action Cable in production
