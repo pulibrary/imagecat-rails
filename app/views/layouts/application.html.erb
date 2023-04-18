@@ -22,16 +22,21 @@
 
   </head>
 
+  <div id="banner">
+    <h1> ImageCat </h1>
+      <p>A rewrite of <a href="https://imagecat.princeton.edu/">imagecat.princeton.edu</a> using ruby on rails framework.</p>
+  </div>
+
   <body>
     <%= yield %>
   </body>
 
-<div id="footer">
-  <body>
-    Test text for footer of application
-  </body>
+  <div id="footer">
+    <body>
+      Test text for footer of application
+    </body>
   <div id="copyright">
     &copy; <%= Date.current.year %> The Trustees of Princeton University
   </div>
-</div>
+  </div>
 </html>
