@@ -11,7 +11,17 @@ commands:
           key: *gem_key
           paths:
             - ./vendor/bundle
-
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          key: &yarn_key rails_template-yarn-cimg-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install NPM Dependencies via Yarn
+          command: yarn install --frozen-lockfile
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: *yarn_key
+          paths:
+            - ~/.cache/yarn
 orbs:
   browser-tools: circleci/browser-tools@1.4.1
   coveralls: coveralls/coveralls@1.0.6
