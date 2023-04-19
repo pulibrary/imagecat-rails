@@ -1,7 +1,7 @@
 {
   "devDependencies": {
-    "vite": "^4.2.1",
-    "vite-plugin-ruby": "^3.2.1"
+    "vite": "^4.2.0",
+    "vite-plugin-ruby": "^3.2.0"
   },
   "dependencies": {
     "lux-design-system": "^4.3.0",

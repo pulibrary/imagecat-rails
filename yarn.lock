@@ -917,7 +917,7 @@ v-calendar@^0.9.7:
   dependencies:
     vue "^2.5.0"
 
-vite-plugin-ruby@^3.2.1:
+vite-plugin-ruby@^3.2.0:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/vite-plugin-ruby/-/vite-plugin-ruby-3.2.1.tgz#fe2e2572c450a74d9342d64d183985f32583c0ce"
   integrity sha512-GBSplgICiQb/pweEZzXtWrJhvOo33ljE7taAVbxDOXCbm4X3w0mFUmowxFf4I7oePtLPIZRU8N+JHCcBYzNIng==
@@ -925,7 +925,7 @@ vite-plugin-ruby@^3.2.1:
     debug "^4.3.4"
     fast-glob "^3.2.12"
 
-vite@^4.2.1:
+vite@^4.2.0:
   version "4.2.2"
   resolved "https://registry.yarnpkg.com/vite/-/vite-4.2.2.tgz#014c30e5163844f6e96d7fe18fbb702236516dc6"
   integrity sha512-PcNtT5HeDxb3QaSqFYkEum8f5sCVe0R3WK20qxgIvNBZPXU/Obxs/+ubBMeE7nLWeCo2LDzv+8hRYSlcaSehig==
