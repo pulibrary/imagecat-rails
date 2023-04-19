@@ -2,5 +2,12 @@
   "devDependencies": {
     "vite": "^4.2.1",
     "vite-plugin-ruby": "^3.2.1"
+  },
+  "dependencies": {
+    "lux-design-system": "^4.3.0",
+    "sass": "^1.62.0",
+    "vue": "^2.6.10",
+    "vue-loader": "^15.7.0",
+    "vue-template-compiler": "^2.6.10"
   }
 }
