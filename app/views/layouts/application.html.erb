@@ -24,17 +24,12 @@
 
   <body>
     <div id="main-content" class="lux"> 
-     <library-header app-name="ImageCat" abbr-name="LTR" app-url="https://imagecat-prod.princeton.edu" theme="dark">
-    <menu-bar type="main-menu" :menu-items="[
-        {name: 'Help', component: 'Help', href: '/help/'},
-        {name: 'Feedback', component: 'Feedback', href: '/feedback/'},
-        {name: 'Your Account', component: 'Account', href: '/account/', children: [
-          {name: 'Logout', component: 'Logout', href: '/account/'}
-        ]}
-      ]"
-    ></menu-bar>
-  </library-header>
-      <%= yield %>
+        <library-header app-name="ImageCat" abbr-name="LTR" app-url="https://imagecat-prod.princeton.edu" theme="dark">
+        </library-header>
+          <%= yield %>
+      <div>
+        <library-footer></library-footer>
+      </div>
     </div>
   </body>
 </html>

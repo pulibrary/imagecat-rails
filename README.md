@@ -45,9 +45,9 @@ We want to load in CSV files that contain GuideCards and SubGuides data, which w
 
 To import the GuideCards records: `rake import:import_guide_cards`
 
-## Install vite and lux 
+## Install lux 
 
-Since we are using vite in the application, the following steps will help to set up the lux-integration library. 
+The following steps will help to set up lux for this application. 
 
 Step 1: We followed the [lux documentation](https://vite-ruby.netlify.app/guide/#installation-%F0%9F%92%BF) to install vite-ruby. 
 
@@ -65,9 +65,7 @@ We want to make sure that our package.json file matches step 6 in the [lux insta
 
 ```
 "dependencies": {
-  "@rails/webpacker": "^3.3.1",
   "lux-design-system": "^2.0.4",
-  "vuex": "^2.4.1",
   "vue": "^2.6.10",
   "vue-loader": "^15.7.0",
   "vue-template-compiler": "^2.6.10"
