@@ -3,8 +3,9 @@
 require 'rails_helper'
 
 RSpec.describe 'GuideCards', type: :request do
+  let(:guide_card_fixture) { Rails.root.join('spec', 'fixtures', 'guide_card_fixture.csv') }
   before do
-    GuideCardLoadingService.new.import
+    GuideCardLoadingService.new(csv_location: guide_card_fixture).import
   end
   describe 'GET index' do
     it 'returns http success' do
