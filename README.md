@@ -44,3 +44,90 @@ Currently, this application can not be deployed with pulbot. You must use Capist
 We want to load in CSV files that contain GuideCards and SubGuides data, which was exported from the legacy version of this application. The data lives in the `data` folder of this project. 
 
 To import the GuideCards records: `rake import:import_guide_cards`
+
+## Install lux 
+
+The following steps will help to set up lux for this application. 
+
+Step 1: We followed the [lux documentation](https://vite-ruby.netlify.app/guide/#installation-%F0%9F%92%BF) to install vite-ruby. 
+
+Step 2: 
+
+Then run the following commands:
+
+`yarn add lux-design-system`
+
+`yarn add sass`
+
+Step 3:
+
+We want to make sure that our package.json file matches step 6 in the [lux install guide](https://pulibrary.github.io/lux/docs/#/Installing%20LUX): 
+
+```
+"dependencies": {
+  "lux-design-system": "^2.0.4",
+  "vue": "^2.6.10",
+  "vue-loader": "^15.7.0",
+  "vue-template-compiler": "^2.6.10"
+},
+```
+
+Step 4:
+We will then add the following to ensure that the view renders successfully (tested using localhost). The package.json file now looks like this: 
+
+```
+{
+  "devDependencies": {
+    "vite": "^4.2.1",
+    "vite-plugin-ruby": "^3.2.1"
+  },
+  "dependencies": {
+    "lux-design-system": "^4.3.0",
+    "sass": "^1.62.0",
+    "vue": "^2.6.10",
+    "vue-loader": "^15.7.0",
+    "vue-template-compiler": "^2.6.10"
+  }
+}
+```
+Step 5:
+Paste in code block from step 8 into app/javascript/entrypoints/application.js
+
+```
+import Vue from "vue/dist/vue.esm"
+import system from "lux-design-system"
+import "lux-design-system/dist/system/system.css"
+import "lux-design-system/dist/system/tokens/tokens.scss"
+import store from "../store" // this is only if you are using vuex
+
+Vue.use(system)
+
+// create the LUX app and mount it to wrappers with class="lux"
+document.addEventListener("DOMContentLoaded", () => {
+  var elements = document.getElementsByClassName("lux")
+  for (var i = 0; i < elements.length; i++) {
+    new Vue({
+      el: elements[i],
+      store, // this is only if you're using vuex
+    })
+  }
+})
+```
+
+Step 6:
+Add the following code block (retrieved from https://pulibrary.github.io/lux/docs/#/Patterns/LibraryHeader):
+
+```
+<library-header app-name="Leave and Travel Requests" abbr-name="LTR" app-url="https://catalog.princeton.edu" theme="dark">
+    <menu-bar type="main-menu" :menu-items="[
+        {name: 'Help', component: 'Help', href: '/help/'},
+        {name: 'Feedback', component: 'Feedback', href: '/feedback/'},
+        {name: 'Your Account', component: 'Account', href: '/account/', children: [
+          {name: 'Logout', component: 'Logout', href: '/account/'}
+        ]}
+      ]"
+    ></menu-bar>
+  </library-header>
+  ```
+
+If things have successfully installed, when running your local server you should see this [header](https://pulibrary.github.io/lux/docs/#/Patterns/LibraryHeader).

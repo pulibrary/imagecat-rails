@@ -2,3 +2,7 @@ require: rubocop-rails
 
 Rails/FilePath:
   Enabled: false
+
+Layout/LineLength:
+  Exclude:
+    - "config/initializers/content_security_policy.rb"

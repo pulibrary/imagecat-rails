@@ -8,9 +8,28 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= vite_client_tag %>
+    <%= vite_javascript_tag 'application' %>
+    <!--
+      If using a TypeScript entrypoint file:
+        vite_typescript_tag 'application'
+
+      If using a .jsx or .tsx entrypoint, add the extension:
+        vite_javascript_tag 'application.jsx'
+
+      Visit the guide for more information: https://vite-ruby.netlify.app/guide/rails
+    -->
+
   </head>
 
   <body>
-    <%= yield %>
+    <div id="main-content" class="lux"> 
+        <library-header app-name="ImageCat" abbr-name="LTR" app-url="https://imagecat-prod.princeton.edu" theme="dark">
+        </library-header>
+          <%= yield %>
+      <div>
+        <library-footer></library-footer>
+      </div>
+    </div>
   </body>
 </html>
