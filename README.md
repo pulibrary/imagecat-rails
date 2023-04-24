@@ -131,3 +131,19 @@ Add the following code block (retrieved from https://pulibrary.github.io/lux/doc
   ```
 
 If things have successfully installed, when running your local server you should see this [header](https://pulibrary.github.io/lux/docs/#/Patterns/LibraryHeader).
+
+## Use Cases for Imagecat
+
+* When cards were converted to OCLC records, there were quality assurance issues. These scanned cards allow us to correct these errors when they come up. 
+
+* If we don’t correct the errors then people will be misled, e.g. notes about items held in another library, not at Princeton
+
+* There may be accession ids on the cards (used between 1900 and 1942 or 43) that match with entries in accession books, which have info about where we got the book and how much we paid for it. This is pertinent for rare books.
+
+* Call numbers may exist on the current site that weren’t transferred and that may need to be updated.
+
+* Law enforcement sometimes wants to know provenance -- proof of ownership and when we acquired an item.
+
+* Provides a historical view of library to a certain point in time, e.g. wrote an article about 3 millionth acquisition.
+
+* Grants the ability to print a single card and carry it into the stacks
