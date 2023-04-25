@@ -32,6 +32,9 @@ gem 'jbuilder'
 # Use vite as a JavaScript build tool
 gem 'vite_rails'
 
+# Use kaminari for pagination of data model
+gem 'kaminari'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
