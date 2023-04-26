@@ -3,7 +3,7 @@
 # controller for GuideCards
 class GuideCardsController < ApplicationController
   def index
-    @guide_cards = GuideCard.all.sort
+    @guide_cards = GuideCard.page(params[:page])
   end
 
   def show
