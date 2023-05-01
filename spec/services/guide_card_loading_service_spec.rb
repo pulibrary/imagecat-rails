@@ -16,6 +16,6 @@ describe GuideCardLoadingService do
   it 'imports all data from the CSV file' do
     expect(GuideCard.count).to eq 0
     gcls.import
-    expect(GuideCard.count).to eq 5
+    expect(GuideCard.count).to eq 11
   end
 end

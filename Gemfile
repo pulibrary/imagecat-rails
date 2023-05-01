@@ -32,6 +32,9 @@ gem 'jbuilder'
 # Use vite as a JavaScript build tool
 gem 'vite_rails'
 
+# Use kaminari for pagination of data model
+gem 'kaminari'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
@@ -60,13 +63,16 @@ group :development, :test do
   gem 'capistrano-passenger', require: false
   gem 'capistrano-rails', '~> 1.6', require: false
   gem 'capistrano-rails-console', require: false
+  gem 'capybara'
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'pry'
   gem 'pry-byebug'
   gem 'rspec-rails'
   gem 'rubocop-rails', require: false
+  gem 'selenium-webdriver'
   gem 'simplecov'
   gem 'simplecov-lcov', '~> 0.8.0'
+  gem 'webdrivers'
 end
 
 group :development do
