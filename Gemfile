@@ -63,13 +63,16 @@ group :development, :test do
   gem 'capistrano-passenger', require: false
   gem 'capistrano-rails', '~> 1.6', require: false
   gem 'capistrano-rails-console', require: false
+  gem 'capybara'
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'pry'
   gem 'pry-byebug'
   gem 'rspec-rails'
   gem 'rubocop-rails', require: false
+  gem 'selenium-webdriver'
   gem 'simplecov'
   gem 'simplecov-lcov', '~> 0.8.0'
+  gem 'webdrivers'
 end
 
 group :development do
@@ -81,8 +84,4 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
-end
-
-group :test do 
-  gem 'capybara'
 end
