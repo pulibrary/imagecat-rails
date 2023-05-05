@@ -23,12 +23,14 @@
   </head>
 
   <body>
-    <div id="main-content" class="lux"> 
-        <library-header app-name="ImageCat" abbr-name="LTR" app-url="https://imagecat-prod.princeton.edu" theme="dark">
-        </library-header>
-          <%= yield %>
+    <div class="lux">
+      <library-header app-name="ImageCat" abbr-name="LTR" app-url="https://imagecat-prod.princeton.edu" theme="dark">
+      </library-header>
+      <div id="main-content"> 
+        <%= yield %>
+      </div>
       <div>
-        <library-footer></library-footer>
+       <library-footer></library-footer>
       </div>
     </div>
   </body>
