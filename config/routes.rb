@@ -8,5 +8,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root static("placeholder.html")
-  get '/', to: redirect('placeholder.html')
+  root 'guide_cards#index'
 end
