@@ -34,5 +34,24 @@ describe GuideCardLoadingService do
       expect(Rails.logger).to have_received(:info).with('14/0001/A1002 does not match 14/0001/A1234 in record 3')
     end
   end
+
+  context 'with a CSV that has duplicate headings' do
+    before do
+      File.delete(new_csv) if File.exist?(new_csv)
+    end
+    let(:fixture_file) { Rails.root.join('spec', 'fixtures', 'guide_card_fixture.csv') }
+    let(:new_csv) { Rails.root.join('spec', 'fixtures', 'deduplicated_guide_card_fixture.csv') }
+    it 'writes a new file without duplicate headings' do
+      expect(File.exist?(new_csv)).to eq false
+      guide_card_data = CSV.parse(File.read(fixture_file), headers: true)
+      expect(guide_card_data.headers).to contain_exactly('ID', 'heading', 'sortid', 'path', 'ID', 'heading', 'sortid',
+                                                         'path')
+      expect(guide_card_data.count).to eq 11
+      gcls.deduplicate_csv_headings(new_csv)
+      deduplicate_guide_card_data = CSV.parse(File.read(new_csv), headers: true)
+      expect(deduplicate_guide_card_data.headers).to contain_exactly('ID', 'heading', 'sortid', 'path')
+      expect(deduplicate_guide_card_data.count).to eq 11
+    end
+  end
 end
 # rubocop:enable Metrics/BlockLength
