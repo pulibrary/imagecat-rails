@@ -21,4 +21,16 @@ class GuideCardLoadingService
       gc.save
     end
   end
+
+  def scan
+    guide_card_data = CSV.parse(File.read(csv_location), headers: true)
+    heading_pairs = [[0, 4], [1, 5], [2, 6], [3, 7]]
+    guide_card_data.each do |card|
+      heading_pairs.each do |pair|
+        if card[pair[0]] != card[pair[1]]
+          Rails.logger.info("#{card[pair[0]]} does not match #{card[pair[1]]} in record #{card[0]}")
+        end
+      end
+    end
+  end
 end
