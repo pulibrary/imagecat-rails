@@ -17,6 +17,6 @@ RSpec.describe SubGuideCard, type: :model do
     expect(subguidecard.sortid).to eq '50350.5'
     expect(subguidecard.parentid).to eq '50345.5'
     expect(subguidecard.path).to eq '9/0091/A3067'
-    expect(subguidecard.guide_card.class).to eq GuideCard 
+    expect(subguidecard.guide_card.class).to eq GuideCard
   end
 end
