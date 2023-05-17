@@ -12,9 +12,9 @@ describe SubGuideLoadingService do
     expect(sgls.csv_location).to eq Rails.root.join('spec', 'fixtures', 'subguide_card_fixture.csv')
   end
 
-  # it 'imports all data from the CSV file' do
-  #   expect(SubGuideCard.count).to eq 0
-  #   sgls.import
-  #   expect(SubGuideCard.count).to eq 5
-  # end
+  it 'imports all data from the CSV file' do
+    expect(SubGuideCard.count).to eq 0
+    sgls.import
+    expect(SubGuideCard.count).to eq 5
+  end
 end
