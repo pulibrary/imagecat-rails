@@ -147,3 +147,24 @@ If things have successfully installed, when running your local server you should
 * Provides a historical view of library to a certain point in time, e.g. wrote an article about 3 millionth acquisition.
 
 * Grants the ability to print a single card and carry it into the stacks
+
+## How to access legacy RDP code for ImageCat
+
+To better understand how the SubGuide and GuideCard data relates to each other, we are able to use RDP to access the legacy code within a Windows virtual environment. 
+
+To access the code, you will need to have the Microsoft Remote Desktop application installed on your machine.
+
+Click the 'add workspace or desktop' icon and add the following:
+- `lib-dbserver.princeton.edu` will be the hostname
+- the user account will most likely be your CAS login (xxxxxx@princeton.edu) 
+  - will need to request access to the server from a System Administrator in the Operations team
+- click  the 'Display' tab on the screen, and select the best resolution for your monitor, if desired
+
+Once this is set up, right-click on `lib-dbserver.princeton.edu` to connect
+- press continue on the pop-up of the certificate warning to proceed
+- Duo-enabled support required to access the server
+
+During the initial launch, it may take longer for the server to boot up due to the configs being created. 
+
+Navigate to `Computer` then `C:/inetpub/wwwroot/ImageCat` to access the legacy files.
+

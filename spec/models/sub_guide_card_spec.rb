@@ -4,19 +4,19 @@ require 'rails_helper'
 
 RSpec.describe SubGuideCard, type: :model do
   it 'has the SubGuideCard fields' do
-    subguidecard = SubGuideCard.new
-    subguidecard.id = 2
-    subguidecard.heading = 'Afdeling natuurkunde'
-    subguidecard.sortid = '50350.5'
-    subguidecard.parentid = '50345.5'
-    subguidecard.path = '9/0091/A3067'
-    subguidecard.guide_card = GuideCard.create
-    subguidecard.save
-    expect(subguidecard.id).to eq 2
-    expect(subguidecard.heading).to eq 'Afdeling natuurkunde'
-    expect(subguidecard.sortid).to eq '50350.5'
-    expect(subguidecard.parentid).to eq '50345.5'
-    expect(subguidecard.path).to eq '9/0091/A3067'
-    expect(subguidecard.guide_card.class).to eq GuideCard
+    sub_guide_card = SubGuideCard.new
+    sub_guide_card.id = 2
+    sub_guide_card.heading = 'Afdeling natuurkunde'
+    sub_guide_card.sortid = '50350.5'
+    sub_guide_card.parentid = '50345.5'
+    sub_guide_card.path = '9/0091/A3067'
+    sub_guide_card.guide_card = GuideCard.create
+    sub_guide_card.save
+    expect(sub_guide_card.id).to eq 2
+    expect(sub_guide_card.heading).to eq 'Afdeling natuurkunde'
+    expect(sub_guide_card.sortid).to eq '50350.5'
+    expect(sub_guide_card.parentid).to eq '50345.5'
+    expect(sub_guide_card.path).to eq '9/0091/A3067'
+    expect(sub_guide_card.guide_card.class).to eq GuideCard
   end
 end
