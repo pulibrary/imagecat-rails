@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_17_135006) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_02_135223) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -29,8 +29,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_17_135006) do
     t.string "path"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "guide_card_id"
-    t.index ["guide_card_id"], name: "index_sub_guide_cards_on_guide_card_id"
   end
 
 end
