@@ -17,4 +17,22 @@ RSpec.describe SubGuideCard, type: :model do
     expect(sub_guide_card.parentid).to eq '50345.5'
     expect(sub_guide_card.path).to eq '9/0091/A3067'
   end
+
+  describe '#parent' do # this is an instance method and not a Class method
+    context 'when the sub_guide_card has a guide_card as a parent' do
+      it 'returns that parent object' do
+        sub_guide_card = SubGuideCard.create(parentid: '50345.5')
+        guide_card = GuideCard.create(sortid: '50345.5')
+        expect(sub_guide_card.parent).to eq guide_card
+      end
+    end
+
+    context 'when the sub_guide_card has a sub_guide_card as a parent' do
+      it 'returns that parent object' do
+        sub_guide_card = SubGuideCard.create(parentid: '50345.5')
+        parent_card = SubGuideCard.create(sortid: '50345.5')
+        expect(sub_guide_card.parent).to eq parent_card
+      end
+    end
+  end
 end
