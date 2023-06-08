@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
-# SubGuideCard class which each GuideCard belongs to
-# Line 6 is a validation. The validation states that in order for a sub_guide to save it needs an associated guide_card
+# SubGuideCards provide hierarchical structure between GuideCards and catalog cards
 class SubGuideCard < ApplicationRecord
+  # A sub_guide_card parent can either be a GuideCard or a SubGuideCard
+  def parent
+    GuideCard.find_by(sortid: parentid) || SubGuideCard.find_by(sortid: parentid)
+  end
 end

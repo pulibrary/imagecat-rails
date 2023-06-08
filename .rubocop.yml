@@ -6,3 +6,7 @@ Rails/FilePath:
 Layout/LineLength:
   Exclude:
     - "config/initializers/content_security_policy.rb"
+
+Metrics/BlockLength:
+  Exclude:
+    - "spec/**/*"

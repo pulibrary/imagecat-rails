@@ -11,6 +11,7 @@
 /tmp/
 .DS_Store
 spec/fixtures/deduplicated_guide_card_fixture.csv
+.vscode/
 
 # Ignore all logfiles and tempfiles.
 /log/*
