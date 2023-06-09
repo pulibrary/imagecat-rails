@@ -1,7 +1,7 @@
 <h1 id="list_header"> GuideCard Index </h1>
 
 <% @guide_cards.each do |card| %>
-  <h2> <%= link_to card.heading, guide_card_path(card.id) %> </h2>
+  <h2><%= link_to card.heading, guide_card_path(card.id) %></h2>
 <% end %>
 
 <%= paginate @guide_cards %>
