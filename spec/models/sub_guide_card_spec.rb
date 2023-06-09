@@ -35,4 +35,14 @@ RSpec.describe SubGuideCard, type: :model do
       end
     end
   end
+
+  describe '#children' do
+    context 'when the sub_guide_card has a sub_guide_card as a child' do
+      it 'returns a collection that includes a child object' do
+        sub_guide_card = SubGuideCard.create(sortid: '50345.5')
+        child_card = SubGuideCard.create(parentid: '50345.5')
+        expect(sub_guide_card.children).to contain_exactly child_card
+      end
+    end
+  end
 end

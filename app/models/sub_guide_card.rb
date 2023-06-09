@@ -6,4 +6,5 @@ class SubGuideCard < ApplicationRecord
   def parent
     GuideCard.find_by(sortid: parentid) || SubGuideCard.find_by(sortid: parentid)
   end
+  include HasChildren
 end
