@@ -1,21 +1,41 @@
 # Image Processing 
 
-ssh into systems@imagecat2.princeton.edu 
+## Transferring files from legacy system to imagecat-staging
 
-`ssh systems@imagecat2.princeton.edu`
+ssh into pulsys@imagecat-staging1.princeton.edu 
+
+`ssh pulsys@imagecat-staging1.princeton.edu`
+
+Look at the existing tmux sessions to determine if a new one will need to be created. The session we would like to see is 'image-transfer'
+
+`tmux ls`
+
+If you do not see 'image-transfer' then we will have to create a new tmux session.
+
+```
+tmux new -s image-transfer
+bash
+```
+
+If we do see an existing tmux session called 'image-transfer' then we will just need to attach to an existing tmux session.
+
+`tmux attach -t image-transfer`
+
+To exit a tmux session, use the commands ctrl+b, then d.
 
 Obtain the 'Image Catalog' password for this server in [LastPass](https://www.lastpass.com/)
 
-Once you are have ssh into the shell, navigate to the imagecat sub-directory 
+## rsync images one disk at a time
+ 
+`rsync -a --include=*.tiff --info=progress2 systems@imagecat2:/var/www/html/imagecat/disk2 /var/tmp/imagecat`
 
-`cd /var/www/html/imagecat`
+## Rename files and upload to s3 
 
-The images are located on the disk directories (numbered 1-14). 
+1. ssh into imagecat-staging1 `ssh pulsys@imagecat-staging1.princeton.edu`
+2. 
 
-We want to extract ONLY the original .tiff images and import these to an AmazonS3 bucket. 
+## Helpful tmux tips
 
-They will be extracted to a local drive, where then the images will be moved to the S3 bucket. The images are currently housed on a local machine in the following path:
+If we need to delete a tmux session, we can run the following command:
 
-`cp *.tiff ../../../output/disk14/0001/A1002`
-
-The PUL-iiif server will allow the user to render the images and interact with them as needed. 
+`tmux kill-session -t <name>`
