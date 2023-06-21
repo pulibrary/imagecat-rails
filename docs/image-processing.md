@@ -27,12 +27,20 @@ Obtain the 'Image Catalog' password for this server in [LastPass](https://www.la
 
 ## rsync images one disk at a time
  
-`rsync -a --include=*.tiff --info=progress2 systems@imagecat2:/var/www/html/imagecat/disk2 /var/tmp/imagecat`
+`rsync -a --include=*.tiff --info=progress2 systems@imagecat2:/var/www/html/imagecat/disk1 /var/tmp/imagecat`
 
 ## Rename files and upload to s3 
 
 1. ssh into imagecat-staging1 `ssh pulsys@imagecat-staging1.princeton.edu`
-2. 
+1. run `tmux attach -t image-transfer`
+1. `sudo su - deploy`
+1. `cd /opt/imagecat_rails/current` 
+1. `ruby data/copy_images.rb  /var/tmp/imagecat/disk1 s3://puliiif-staging` (for production, use `s3://puliiif-production`)
+1. `aws s3 ls s3://puliiif-staging/imagecat-disk1-`
+
+To verify that the images have uploaded correctly: https://puliiif-staging.princeton.edu/iiif/2/[choose any file from the results of the command above, without the .tif extension]/full/,500/0/default.jpg
+
+Ex: https://puliiif-staging.princeton.edu/iiif/2/imagecat-disk1-0012-A1087-0000.0078/full/,500/0/default.jpg
 
 ## Helpful tmux tips
 
