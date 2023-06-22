@@ -15,6 +15,6 @@ describe SubGuideLoadingService do
   it 'imports all data from the CSV file' do
     expect(SubGuideCard.count).to eq 0
     sgls.import
-    expect(SubGuideCard.count).to eq 5
+    expect(SubGuideCard.count).to eq 6
   end
 end
