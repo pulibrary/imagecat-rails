@@ -24,6 +24,8 @@ body {
 	list-style: none;
 	border-radius: 15rem;
 	background-color: #eae7e2;
+  padding: 5px;
+  padding-top: 25px;
 }
 .page-link {
 	color: black;
@@ -33,4 +35,7 @@ body {
 	margin-left: -3px;
 	line-height: 1.25;
 	border: .25px solid #eae7e2;
+  white-space: nowrap;
+	z-index: 3;
+	text-decoration: none;
 }
