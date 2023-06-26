@@ -19,3 +19,18 @@ body {
 #main-content {
   margin: 20px 100px;
 }
+.pagination {
+	display: flex;
+	list-style: none;
+	border-radius: 15rem;
+	background-color: #eae7e2;
+}
+.page-link {
+	color: black;
+	font-size: 15px;
+	position: relative;
+	padding: 0.5rem 0.75rem;
+	margin-left: -3px;
+	line-height: 1.25;
+	border: .25px solid #eae7e2;
+}
