@@ -17,9 +17,6 @@ body {
   margin: 0;
 }
 #main-content {
-<<<<<<< Updated upstream
-  margin: 20px 100px;
-=======
     margin: 20px 100px;
 }
 
@@ -27,6 +24,10 @@ body {
     color: orange;
     text-align: justify;
     font-size: 40px
+}
+
+#list_entries {
+    font-size: 18px;
 }
 
 .pagination {
@@ -99,5 +100,4 @@ body {
     cursor:auto;
     background-color:#ffffff;
     border-color:#dee2e6
->>>>>>> Stashed changes
 }

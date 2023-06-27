@@ -1,11 +1,7 @@
-<<<<<<< Updated upstream
-<h1> GuideCard Index </h1>
-=======
 <h1 id="list_header"> Guide Card Index </h1>
->>>>>>> Stashed changes
 
 <% @guide_cards.each do |card| %>
-  <h2> <%= link_to card.heading, guide_card_path(card.id) %> </h2>
+  <h2 id="list_entries"> <%= link_to card.heading, guide_card_path(card.id) %> </h2>
 <% end %>
 
 <%= paginate @guide_cards %>
