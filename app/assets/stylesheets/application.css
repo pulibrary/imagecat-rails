@@ -16,9 +16,15 @@
 body {
     margin: 0;
 }
+
 #main-content {
     margin: 20px 100px;
 }
+
+#list_header {
+    color: orange
+}
+
 .pagination {
     display: flex;
     list-style: none;
@@ -26,6 +32,7 @@ body {
     padding: 5px;
     padding-top: 25px;
 }
+
 .page-link {
     color: black;
     font-size: 15px;
@@ -37,4 +44,55 @@ body {
     white-space: nowrap;
     z-index: 3;
     text-decoration: none;
+}
+
+.page-link {
+    position:relative;
+    display:block;
+    padding:0.5rem 0.75rem;
+    margin-left:-1px;
+    line-height:1.25;
+    color:#3072AB;
+    background-color:#ffffff;
+    border:1px solid #dee2e6
+}
+
+.page-link:hover {
+    z-index:2;
+    color:#1f4a6f;
+    text-decoration:none;
+    background-color:#e9ecef;
+    border-color:#dee2e6
+}
+
+.page-link:focus {
+    z-index:3;
+    outline:0;
+    box-shadow:0 0 0 0.2rem rgba(48,114,171,0.25)
+}
+
+.page-item:first-child .page-link {
+    margin-left:0;
+    border-top-left-radius:0.25rem;
+    border-bottom-left-radius:0.25rem
+}
+
+.page-item:last-child .page-link {
+    border-top-right-radius:0.25rem;
+    border-bottom-right-radius:0.25rem
+}
+
+.page-item.active .page-link {
+    z-index:3;
+    color:#ffffff;
+    background-color:#3072AB;
+    border-color:#3072AB
+}
+
+.page-item.disabled .page-link {
+    color:#6c757d;
+    pointer-events:none;
+    cursor:auto;
+    background-color:#ffffff;
+    border-color:#dee2e6
 }
