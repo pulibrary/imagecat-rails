@@ -34,7 +34,7 @@ body {
 	margin-left: -3px;
 	line-height: 1.25;
 	border: .25px solid #eae7e2;
-  white-space: nowrap;
+	white-space: nowrap;
 	z-index: 3;
 	text-decoration: none;
 }
