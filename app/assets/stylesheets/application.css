@@ -23,8 +23,8 @@ body {
 	display: flex;
 	list-style: none;
 	border-radius: 15rem;
-  padding: 5px;
-  padding-top: 25px;
+	padding: 5px;
+	padding-top: 25px;
 }
 .page-link {
 	color: black;
