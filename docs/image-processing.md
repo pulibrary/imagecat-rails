@@ -42,6 +42,8 @@ To verify that the images have uploaded correctly: https://puliiif-staging.princ
 
 Ex: https://puliiif-staging.princeton.edu/iiif/2/imagecat-disk1-0012-A1087-0000.0078/full/,500/0/default.jpg
 
+This is an example link of an image in puliiif production: https://puliiif.princeton.edu/iiif/2/imagecat-disk1-0675-B1764-0000.0219/full/,500/0/default.jpg
+
 ## Helpful tmux tips
 
 If we need to delete a tmux session, we can run the following command:

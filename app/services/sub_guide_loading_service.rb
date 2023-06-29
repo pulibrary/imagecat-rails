@@ -11,7 +11,7 @@ class SubGuideLoadingService
   end
 
   def import
-    sub_guide_card_data = CSV.parse(File.read(csv_location), headers: true)
+    sub_guide_card_data = CSV.parse(File.read(csv_location), headers: true, liberal_parsing: true)
     sub_guide_card_data.each do |entry|
       import_sub_guide_card(entry)
     end
