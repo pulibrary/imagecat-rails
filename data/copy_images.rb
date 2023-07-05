@@ -8,12 +8,14 @@ source = ARGV[0]
 destination = ARGV[1]
 puts "Copying files from #{source} to #{destination}"
 files = Dir["#{source}/**/*.tiff"]
-files.each do |file_name|
-  puts file_name
-  file_parts = file_name.split('/')
-  file_parts[-1] = file_parts[-1].chop
-  s3_safe_file_name = "imagecat-#{file_parts[-4..].join('-')}"
-  `aws s3 cp #{file_name} #{destination}/#{s3_safe_file_name}`
-end
+files.map do |file_name|
+  Thread.new do
+    puts file_name
+    file_parts = file_name.split('/')
+    file_parts[-1] = file_parts[-1].chop
+    s3_safe_file_name = "imagecat-#{file_parts[-4..].join('-')}"
+    `aws s3 cp #{file_name} #{destination}/#{s3_safe_file_name}`
+  end
+end.each(&:join)
 
 # "/Users/faisonr/Downloads/imagecat-images-practice-1/input/disk14/**/*.tiff"
