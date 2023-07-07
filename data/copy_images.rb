@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'fileutils'
 
-#!/usr/bin/env ruby
+# !/usr/bin/env ruby
 # frozen_string_literal: true
 
 # This is an example of what we want our script to look like for
