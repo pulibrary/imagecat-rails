@@ -11,7 +11,7 @@ require 'fileutils'
 source = ARGV[0]
 destination = ARGV[1]
 puts "Copying files from #{source} to #{destination}"
-files = Dir["#{source}/**/*.tiff"]
+files = Dir[File.join(source, '**/*.tiff')]
 sync_dir = File.join(source, 'for_aws_sync')
 Dir.mkdir(sync_dir)
 files.each do |file_name|
