@@ -167,17 +167,3 @@ Once this is set up, right-click on `lib-dbserver.princeton.edu` to connect
 During the initial launch, it may take longer for the server to boot up due to the configs being created. 
 
 Navigate to `Computer` then `C:/inetpub/wwwroot/ImageCat` to access the legacy files.
-
-## Notes for copying images from staging server to puliiif-production bucket
-
-There are .tiff images that were extracted from the legacy server (`lib-dbserver.princeton.edu`) and placed into the `imagecat-staging` subdirectory `/var/tmp/imagecat`. 
-
-For each disk, running `time ruby data/copy_images.rb /var/tmp/imagecat/disk_n_ s3://puliiif-production` allowed for the images to be copied over to the aws bucket in ~30-45 minutes per disk. 
-
-You must launch this command from the `imagecat-staging` server as the deploy user. Running a tmux session for this command is optional, but recommended due to the amount of time each disk takes to transfer. 
-
-If the disks list `pulsys` as the user instead of `deploy` change the permissions using `sudo chown -R deploy:deploy disk_n_` for the command to run without it being stopped because aws will not recongize the user credentials. 
-
-During the copying process, there were also instances where an error occurred regarding not having enough space. This was due to the volume of space used that the copied images were accumulating. 
-
-This blocker was remediated with `sudo rm -rf for_aws_sync` in the directories of the disks that had already been copied over to the aws bucket. This freed up space in the imagecat-staging server and allowed for continued copying of images. 
