@@ -23,7 +23,7 @@ commands:
           paths:
             - ~/.cache/yarn
 orbs:
-  browser-tools: circleci/browser-tools@1.4.1
+  browser-tools: circleci/browser-tools@1.4.3
   coveralls: coveralls/coveralls@1.0.6
 jobs:
   build:
