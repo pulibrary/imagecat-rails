@@ -167,4 +167,3 @@ Once this is set up, right-click on `lib-dbserver.princeton.edu` to connect
 During the initial launch, it may take longer for the server to boot up due to the configs being created. 
 
 Navigate to `Computer` then `C:/inetpub/wwwroot/ImageCat` to access the legacy files.
-
