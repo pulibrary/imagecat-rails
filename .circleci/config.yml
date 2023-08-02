@@ -64,7 +64,9 @@ jobs:
     steps:
       - attach_workspace:
           at: *root
-      - browser-tools/install-browser-tools
+      - browser-tools/install-browser-tools:
+        install-firefox: false
+        install-chrome: false
       - run:
           name: Wait for PostgreSQL
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
