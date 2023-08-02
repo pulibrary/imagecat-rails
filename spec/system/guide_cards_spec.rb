@@ -19,9 +19,9 @@ RSpec.describe 'GuideCards', type: :system, js: true do
 
   describe 'GuideCards show page' do
     it 'displays children SubGuide cards' do
-      # children_sub_guide = SubGuideCard.create(parentid: GuideCard.find(3).sortid, heading: 'SubGuide for record 3')
+      SubGuideCard.create(parentid: GuideCard.find(3).sortid, heading: 'Institut fizicheskoi >')
       visit '/guide_cards/3'
-      expect(page).to have_text 'SubGuide for record 3'
+      expect(page).to have_text 'Institut fizicheskoi >'
     end
   end
 end

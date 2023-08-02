@@ -3,11 +3,9 @@
 <h2><%= @guide_card.path %></h2>
 
 
-<h2>SubGuide for record 3</h2>
+<h2>List of SubGuide cards</h2>
 <ul>
-<li>
-<%# @sub_guide_cards.each do |sub_guide| %>
-<%# end %>
-<%# Need to set subguide card in my controller %>
-</li>
+  <% @sub_guide_cards.each do |sub_guide| %>
+    <li><%= sub_guide.heading %></li>
+  <% end %>
 </ul>
