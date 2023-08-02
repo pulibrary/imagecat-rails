@@ -13,8 +13,11 @@ class SubGuideLoadingService
   def import
     sub_guide_card_data = CSV.parse(File.read(csv_location), headers: true, liberal_parsing: true)
     sub_guide_card_data.each do |entry|
+      Rails.logger.debug '#'
+      $stdout.flush
       import_sub_guide_card(entry)
     end
+    Rails.logger.debug 'task completed!'
   end
 
   private
