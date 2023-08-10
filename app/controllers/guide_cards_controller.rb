@@ -8,5 +8,6 @@ class GuideCardsController < ApplicationController
 
   def show
     @guide_card = GuideCard.find(params[:id])
+    @sub_guide_cards = @guide_card.children
   end
 end
