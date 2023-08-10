@@ -45,4 +45,18 @@ RSpec.describe SubGuideCard, type: :model do
       end
     end
   end
+
+  context 'when we use a card from disk5 with path 5/0338/A5977' do
+    it 'returns a URL' do
+      sub_guide_image = SubGuideCard.create(path: '5/0338/A5977')
+      expect(sub_guide_image.url).to eq 'https://puliiif.princeton.edu/iiif/2/imagecat-disk5-0338-A5977-0000.0073/full/,500/0/default.jpg'
+    end
+  end
+
+  context 'when we use a card from disk4 with path 4/1466/B5962' do
+    xit 'returns a URL' do
+      sub_guide_image = SubGuideCard.create(path: '4/1466/B5962')
+      expect(sub_guide_image.url).to eq 'https://puliiif.princeton.edu/iiif/2/imagecat-disk4-1466-B5962-0000.0064/full/,500/0/default.jpg'
+    end
+  end
 end
