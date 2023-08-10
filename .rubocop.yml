@@ -6,6 +6,7 @@ Rails/FilePath:
 Layout/LineLength:
   Exclude:
     - "config/initializers/content_security_policy.rb"
+    - "spec/services/card_image_loading_service_spec.rb"
 
 Metrics/BlockLength:
   Exclude:
