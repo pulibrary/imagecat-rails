@@ -7,6 +7,7 @@ Layout/LineLength:
   Exclude:
     - "config/initializers/content_security_policy.rb"
     - "spec/services/card_image_loading_service_spec.rb"
+    - "app/services/card_image_loading_service.rb"
 
 Metrics/BlockLength:
   Exclude:
