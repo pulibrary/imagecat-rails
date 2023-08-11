@@ -15,3 +15,12 @@ Metrics/BlockLength:
 
 Rails/Output:
   Enabled: false 
+
+Metrics/MethodLength:
+  Exclude:
+    - "app/services/card_image_loading_service.rb"
+    - "app/services/guide_card_loading_service.rb"
+
+Metrics/AbcSize:
+  Exclude:
+    - "app/services/guide_card_loading_service.rb"

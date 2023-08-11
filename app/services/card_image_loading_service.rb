@@ -14,8 +14,11 @@ class CardImageLoadingService
         ci.path = sgc.path
         ci.image_name = file_name
         ci.save
+        print '#'
+        $stdout.flush
       end
     end
+    puts 'task completed!'
   end
 
   # returns something like
@@ -31,7 +34,3 @@ class CardImageLoadingService
     `#{s3_query}`
   end
 end
-# Next steps: to fill in s3_image_list method
-# We should get the path from the SubGuideCard and turn it into the hyphenated format
-# We should then use that in the `aws s3 ls` command
-# This method should take the arguments of the SubGuideCard path
