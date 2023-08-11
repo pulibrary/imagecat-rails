@@ -10,4 +10,9 @@ namespace :import do
   task import_sub_guide_cards: :environment do
     SubGuideLoadingService.new.import
   end
+
+  desc 'Import CardImage data'
+  task import_card_images: :environment do
+    CardImageLoadingService.new.import
+  end
 end

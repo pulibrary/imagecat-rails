@@ -19,7 +19,10 @@ class GuideCardLoadingService
       gc.sortid = card[2]
       gc.path = card[3]
       gc.save
+      print '#'
+      $stdout.flush
     end
+    puts 'task completed!'
   end
 
   def scan
