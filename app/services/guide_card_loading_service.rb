@@ -24,27 +24,4 @@ class GuideCardLoadingService
     end
     puts 'task completed!'
   end
-
-  def scan
-    guide_card_data = CSV.parse(File.read(csv_location), headers: true)
-    heading_pairs = [[0, 4], [1, 5], [2, 6], [3, 7]]
-    guide_card_data.each do |card|
-      heading_pairs.each do |pair|
-        if card[pair[0]] != card[pair[1]]
-          Rails.logger.info("#{card[pair[0]]} does not match #{card[pair[1]]} in record #{card[0]}")
-        end
-      end
-    end
-  end
-
-  # this method deduplicates CSV data for GuideCards
-  def deduplicate_csv_headings(new_csv)
-    guide_card_data = CSV.parse(File.read(csv_location), headers: true)
-    CSV.open(new_csv, 'wb') do |csv|
-      csv << %w[ID heading sortid path]
-      guide_card_data.each do |card|
-        csv << [card[0], card[1], card[2], card[3]]
-      end
-    end
-  end
 end
