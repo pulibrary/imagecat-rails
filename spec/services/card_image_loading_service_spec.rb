@@ -23,7 +23,7 @@ describe CardImageLoadingService do
     sgls.import
     expect(CardImage.count).to eq 0
     cils.import
-    expect(CardImage.count).to eq 12
+    expect(CardImage.count).to eq 14
     images = CardImage.where(path: '9/0091/A3037')
     expect(images.map(&:image_name)).to contain_exactly('imagecat-disk9-0091-A3037-1358.0110.tif', 'imagecat-disk9-0091-A3037-1358.0111.tif')
   end
