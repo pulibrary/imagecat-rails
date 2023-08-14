@@ -15,10 +15,10 @@ describe SubGuideLoadingService do
   it 'imports all data from the CSV file' do
     expect(SubGuideCard.count).to eq 0
     sgls.import
-    expect(SubGuideCard.count).to eq 6
+    expect(SubGuideCard.count).to eq 7
   end
 
   it 'displays progress status during import' do
-    expect { sgls.import }.to output("######task completed!\n").to_stdout
+    expect { sgls.import }.to output("#######task completed!\n").to_stdout
   end
 end

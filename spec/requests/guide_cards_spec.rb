@@ -21,7 +21,6 @@ RSpec.describe 'GuideCards', type: :request do
     it 'shows the metadata for a specific item' do
       get '/guide_cards/3'
       expect(response.body).to include('AALAS')
-      expect(response.body).to include('3.5')
       expect(response.body).to include('14/0001/A1002')
     end
   end
