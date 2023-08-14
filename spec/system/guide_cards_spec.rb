@@ -19,22 +19,13 @@ RSpec.describe 'GuideCards', type: :system, js: true do
     end
   end
 
-  describe 'GuideCards show page' do
-    it 'displays children SubGuide cards' do
-      SubGuideCard.destroy_all
-      SubGuideCard.create(parentid: GuideCard.find(3).sortid, heading: 'Institut fizicheskoi >')
-      visit '/guide_cards/3'
-      expect(page).to have_text 'Institut fizicheskoi >'
-    end
-  end
-
   describe 'nested SubGuides with image display' do
     it 'shows the top-level guide with subguides underneath' do
       visit '/guide_cards/2869'
       expect(page).to have_text 'Bible'
+      expect(page).to have_link 'Manuscripts'
       visit '/sub_guide_cards/1625'
       expect(page).to have_text 'Manuscripts'
-      # expect(page).to have_link 'Manuscripts'
     end
   end
 end
