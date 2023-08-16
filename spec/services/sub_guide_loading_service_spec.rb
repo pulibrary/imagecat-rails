@@ -18,7 +18,12 @@ describe SubGuideLoadingService do
     expect(SubGuideCard.count).to eq 7
   end
 
-  it 'displays progress status during import' do
+  xit 'displays progress status during import' do
     expect { sgls.import }.to output("#######task completed!\n").to_stdout
+  end
+
+  it 'displays ruby-progress bar during import' do
+    progressbar = ProgressBar.create
+    expect { sgls.import }.to output(progressbar.increment).to_stdout
   end
 end

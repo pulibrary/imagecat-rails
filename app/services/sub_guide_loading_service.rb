@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'csv'
+require 'ruby-progressbar'
 # service for loading SubGuide cards data
 class SubGuideLoadingService
   attr_reader :csv_location
@@ -19,6 +20,10 @@ class SubGuideLoadingService
     end
     puts 'task completed!'
   end
+
+def progressbar
+  100.times { progressbar.increment }
+end
 
   private
 
