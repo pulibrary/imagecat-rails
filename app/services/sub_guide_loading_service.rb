@@ -21,9 +21,9 @@ class SubGuideLoadingService
     puts 'task completed!'
   end
 
-def progressbar
-  100.times { progressbar.increment }
-end
+  def progressbar
+    100.times { progressbar.increment }
+  end
 
   private
 
