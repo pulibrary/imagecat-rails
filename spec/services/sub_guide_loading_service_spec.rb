@@ -23,7 +23,6 @@ describe SubGuideLoadingService do
   end
 
   it 'displays ruby-progress bar during import' do
-    progressbar = ProgressBar.create
-    expect { sgls.import }.to output(progressbar.increment).to_stdout
+    expect { sgls.import }.to output(/Progress: /).to_stdout_from_any_process
   end
 end

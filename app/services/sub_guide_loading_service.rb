@@ -13,16 +13,13 @@ class SubGuideLoadingService
 
   def import
     sub_guide_card_data = CSV.parse(File.read(csv_location), headers: true, liberal_parsing: true)
-    sub_guide_card_data.each do |entry|
-      print '#'
-      $stdout.flush
+    progressbar = ProgressBar.create
+    pb_increment = sub_guide_card_data.count / 100
+    sub_guide_card_data.each_with_index do |entry, index|
+      byebug
+      2.times { progressbar.increment }
       import_sub_guide_card(entry)
     end
-    puts 'task completed!'
-  end
-
-  def progressbar
-    100.times { progressbar.increment }
   end
 
   private
