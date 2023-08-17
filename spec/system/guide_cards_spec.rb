@@ -7,7 +7,8 @@ RSpec.describe 'GuideCards', type: :system, js: true do
   let(:subguide_card_fixture) { Rails.root.join('spec', 'fixtures', 'subguide_card_fixture.csv') }
   before do
     GuideCardLoadingService.new(csv_location: guide_card_fixture).import
-    SubGuideLoadingService.new(csv_location: subguide_card_fixture).import
+    SubGuideLoadingService.new(csv_location: subguide_card_fixture,
+                               progressbar: ProgressBar.create(output: ProgressBar::Outputs::Null)).import
   end
 
   describe 'GuideCards index page' do

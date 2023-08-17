@@ -349,6 +349,7 @@ DEPENDENCIES
   rails (~> 7.0.4)
   rspec-rails
   rubocop-rails
+  ruby-progressbar
   selenium-webdriver
   simplecov
   simplecov-lcov (~> 0.8.0)

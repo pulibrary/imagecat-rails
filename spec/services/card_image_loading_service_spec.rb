@@ -5,7 +5,8 @@ require 'rails_helper'
 describe CardImageLoadingService do
   let(:cils) { described_class.new }
   let(:sgls) do
-    SubGuideLoadingService.new(csv_location: Rails.root.join('spec', 'fixtures', 'subguide_card_fixture.csv'))
+    SubGuideLoadingService.new(csv_location: Rails.root.join('spec', 'fixtures', 'subguide_card_fixture.csv'),
+                               progressbar: ProgressBar.create(output: ProgressBar::Outputs::Null))
   end
   let(:s3_response) do
     "2023-07-19 14:39:38       3422 imagecat-disk9-0091-A3037-1358.0110.tif\n2023-07-19 14:39:38       7010 imagecat-disk9-0091-A3037-1358.0111.tif\n"
