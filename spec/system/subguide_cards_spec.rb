@@ -12,7 +12,6 @@ RSpec.describe 'GuideCards', type: :system, js: true do
 
   describe 'SubGuide page with image display' do
     it 'shows all images for the SubGuide path' do
-
       visit '/sub_guide_cards/2'
       expect(page).to have_text 'Afdeling natuurkunde'
     end
