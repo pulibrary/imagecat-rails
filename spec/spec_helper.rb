@@ -14,6 +14,7 @@
 # the additional setup, and require it from the spec files that actually need
 # it.
 require 'simplecov'
+require 'ruby-progressbar/outputs/null'
 
 SimpleCov.start 'rails' do
   if ENV['CI']
