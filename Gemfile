@@ -76,7 +76,6 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'simplecov'
   gem 'simplecov-lcov', '~> 0.8.0'
-  gem 'webdrivers'
 end
 
 group :development do

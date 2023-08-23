@@ -1,3 +1,6 @@
 <h1>SubGuideCards#show</h1>
 <p>Find me in app/views/sub_guide_cards/show.html.erb</p>
 <%= @sub_guide_card.heading %>
+<% @card_images.each do |image| %>
+  <%= image_tag(image.iiif_url) %>
+<% end %>
