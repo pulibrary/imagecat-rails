@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
+require 'ruby-progressbar/outputs/null'
 
 describe CardImageLoadingService do
-  let(:cils) { described_class.new }
+  let(:cils) { described_class.new(progressbar: ProgressBar.create(output: ProgressBar::Outputs::Null)) }
   let(:sgls) do
     SubGuideLoadingService.new(csv_location: Rails.root.join('spec', 'fixtures', 'subguide_card_fixture.csv'),
                                progressbar: ProgressBar.create(output: ProgressBar::Outputs::Null))
@@ -32,5 +33,11 @@ describe CardImageLoadingService do
   it 'gets a list of images from s3' do
     image_list = cils.s3_image_list('9/0091/A3037')
     expect(image_list.split("\n").count).to eq 2
+  end
+
+  it 'displays ruby-progress bar during import' do
+    expect(cils.progressbar.to_h['percentage']).to eq 0
+    cils.import
+    expect(cils.progressbar.to_h['percentage']).to eq 100
   end
 end
