@@ -38,10 +38,6 @@ class CardImageLoadingService
     `#{s3_query}`
   end
 
-  def progress_bar_random_color
-    @progressbar.format = "%t: |\e[#{rand(91..97)}m%B\e[0m|"
-  end
-
   private
 
   def create_card_image(sgc, file_name)
@@ -49,5 +45,9 @@ class CardImageLoadingService
     ci.path = sgc.path
     ci.image_name = file_name
     ci.save
+  end
+
+  def progress_bar_random_color
+    @progressbar.format = "%t: |\e[#{rand(91..97)}m%B\e[0m|"
   end
 end
