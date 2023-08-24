@@ -13,17 +13,14 @@ class CardImageLoadingService
   # For each SubGuideCard, take its path and query s3 to get all of the image names
   # for that path. For each image file, create a CardImage object with the path and
   # image name.
-  
+
   def import
     @progressbar.total = SubGuideCard.all.count
     SubGuideCard.all.each_with_index do |sgc, index|
       progress_bar_random_color if (index % 100).zero?
       @progressbar.increment
       image_array(sgc.path).each do |file_name|
-        ci = CardImage.new
-        ci.path = sgc.path
-        ci.image_name = file_name
-        ci.save
+        create_card_image(sgc, file_name)
       end
     end
   end
@@ -43,5 +40,14 @@ class CardImageLoadingService
 
   def progress_bar_random_color
     @progressbar.format = "%t: |\e[#{rand(91..97)}m%B\e[0m|"
+  end
+
+  private
+
+  def create_card_image(sgc, file_name)
+    ci = CardImage.new
+    ci.path = sgc.path
+    ci.image_name = file_name
+    ci.save
   end
 end
