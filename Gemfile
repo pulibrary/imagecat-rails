@@ -38,6 +38,8 @@ gem 'vite_rails'
 # Use kaminari for pagination of data model
 gem 'kaminari'
 
+gem 'ruby-progressbar'
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
@@ -72,7 +74,6 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'rspec-rails'
   gem 'rubocop-rails', require: false
-  gem 'ruby-progressbar'
   gem 'selenium-webdriver'
   gem 'simplecov'
   gem 'simplecov-lcov', '~> 0.8.0'
