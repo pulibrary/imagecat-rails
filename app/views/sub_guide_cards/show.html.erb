@@ -1,6 +1,11 @@
-<h1>SubGuideCards#show</h1>
-<p>Find me in app/views/sub_guide_cards/show.html.erb</p>
-<%= @sub_guide_card.heading %>
+<h2>SubGuide: <%= @sub_guide_card.heading %></h2>
+<% if @sub_guide_card.children.present? %>
+  <ul>
+    <% @sub_guide_card.children.each do |sub_guide| %>
+      <li> <%= link_to sub_guide.heading, sub_guide_card_path(sub_guide.id) %> </li>
+    <% end %>
+  </ul>
+<% end %>
 <% @card_images.each do |image| %>
   <%= image_tag(image.iiif_url) %>
 <% end %>
