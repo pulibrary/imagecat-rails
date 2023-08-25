@@ -15,7 +15,7 @@ Records are arranged alphabetically with authors, titles, and subjects interfile
 
 This project uses [asdf](https://asdf-vm.com/) (see .tool-versions for the current ruby version)
 
-`bundle install` will install the dependencies for this project. 
+`bundle install` will install the dependencies for this project. Use `bundle install` also when updating ruby gems for this project.
 
 ## Database Setup
 
@@ -27,23 +27,34 @@ Startup: `rake servers:start`
 
 ## How to start application locally 
 
-Run the `bin/rails server` command, then in a browser connect to [localhost:3000](http://localhost:3000/)
+Run the `bin/rails server` or `rails s` command, then in a browser connect to [localhost:3000](http://localhost:3000/)
 
 ## How to run the test suite
 
-`bundle exec rspec spec`
+`bundle exec rspec <spec/**/*>`
 
 ## Deploying 
 
-Currently, this application can not be deployed with pulbot. You must use Capistrano on the command line. 
+You may use Capistrano on the command line. 
 
 `BRANCH=branch_name bundle exec cap staging deploy`
 
+`BRANCH=branch_name bundle exec cap production deploy`
+
+Alternatively, you may deploy from [ansible-tower](https://ansible-tower.princeton.edu/).
+
 ## How to load data 
 
-We want to load in CSV files that contain GuideCards and SubGuides data, which was exported from the legacy version of this application. The data lives in the `data` folder of this project. 
+We want to load in CSV files that contain GuideCard and SubGuideCard data, which was exported from the legacy version of this application. The data lives in the `data` folder of this project. 
 
-To import the GuideCards records: `rake import:import_guide_cards`
+To list all import services for the application: `rake -T | grep import`
+
+To import the GuideCard records: `rake import:import_guide_cards`
+To import the SubGuideCard records: `rake import:import_sub_guide_cards`
+
+The CardImage records are the images that are included in the GuideCard and SubGuideCard records. These will take the longest to import (totaling ~1.5 million images).
+
+To import the CardImage records: `rake import:import_card_images`
 
 ## Install lux 
 
