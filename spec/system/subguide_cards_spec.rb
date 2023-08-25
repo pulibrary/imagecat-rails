@@ -11,13 +11,18 @@ RSpec.describe 'SubGuideCards', type: :system, js: true do
   end
 
   describe 'show page' do
-    it 'displays card images as links' do
+    it 'displays card images' do
       ci = CardImage.new
       ci.path = SubGuideCard.find(2).path
       ci.image_name = 'imagecat-disk1-0675-B1764-0000.0219.tif'
       ci.save
       visit '/sub_guide_cards/2'
       expect(page).to have_selector('img')
+    end
+
+    it 'links to child SubGuideCards' do
+      visit '/sub_guide_cards/4'
+      expect(page).to have_link('(As author)')
     end
   end
 end
