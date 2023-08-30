@@ -24,5 +24,15 @@ RSpec.describe GuideCard, type: :model do
         expect(guide_card.children).to contain_exactly child_card
       end
     end
+
+    context 'when the guide_card has a regular sub_guide_card and an info sub_guide_card' do
+      it 'filters out the info card' do
+        guide_card = GuideCard.create(sortid: '50345.5')
+        child_card = SubGuideCard.create(heading: 'Manuscripts', parentid: '50345.5', path: '14/0001/B4491')
+        # Create a card that will be filtered out
+        SubGuideCard.create(heading: 'Manuscripts (info)', parentid: '50345.5', path: 'info/FF')
+        expect(guide_card.children).to contain_exactly child_card
+      end
+    end
   end
 end
