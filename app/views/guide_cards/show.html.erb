@@ -1,8 +1,7 @@
-<h1><%= @guide_card.heading %></h1>
-<h2><%= @guide_card.path %></h2>
+<h2>Guide: <%= @guide_card.heading %></h2>
 
 
-<h2>List of SubGuide cards</h2>
+<h3>List of SubGuide Cards</h3>
 <ul>
   <% @sub_guide_cards.each do |sub_guide| %>
     <li> <%= link_to sub_guide.heading, sub_guide_card_path(sub_guide.id) %> </li>
