@@ -28,7 +28,7 @@ describe CardImageLoadingService do
   it 'imports all SubGuideCard images' do
     sgls.import
     expect(CardImage.count).to eq 0
-    cils.import
+    cils.import_sub_guide_images
     expect(CardImage.count).to eq 14
     images = CardImage.where(path: '9/0091/A3037')
     expect(images.map(&:image_name)).to contain_exactly('imagecat-disk9-0091-A3037-1358.0110.tif', 'imagecat-disk9-0091-A3037-1358.0111.tif')
@@ -39,7 +39,7 @@ describe CardImageLoadingService do
     gcls.import
     expect(GuideCard.count).to eq 12
     expect(CardImage.count).to eq 0
-    cils.import_guide_card_image
+    cils.import_guide_card_images
     expect(CardImage.count).to eq 24
     images = CardImage.where(path: '14/0001/A1003')
     expect(images.map(&:image_name)).to contain_exactly('imagecat-disk9-0091-A3037-1358.0110.tif', 'imagecat-disk9-0091-A3037-1358.0111.tif')
@@ -52,7 +52,7 @@ describe CardImageLoadingService do
 
   it 'displays ruby-progress bar during import' do
     expect(cils.progressbar.to_h['percentage']).to eq 0
-    cils.import
+    cils.import_sub_guide_images
     expect(cils.progressbar.to_h['percentage']).to eq 100
   end
 end

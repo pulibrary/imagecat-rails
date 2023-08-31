@@ -14,7 +14,7 @@ class CardImageLoadingService
   # for that path. For each image file, create a CardImage object with the path and
   # image name.
 
-  def import
+  def import_sub_guide_images
     @progressbar.total = SubGuideCard.all.count
     SubGuideCard.all.each_with_index do |sgc, index|
       progress_bar_random_color if (index % 100).zero?
@@ -25,7 +25,7 @@ class CardImageLoadingService
     end
   end
 
-  def import_guide_card_image
+  def import_guide_card_images
     @progressbar.total = GuideCard.all.count
     GuideCard.all.each_with_index do |gc, index|
       progress_bar_random_color if (index % 100).zero?
