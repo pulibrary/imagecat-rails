@@ -57,7 +57,7 @@ describe CardImageLoadingService do
   end
 
   it 'imports both GuideCard and SubGuideCard images' do
-    expect(GuideCard.count).to eq 0 
+    expect(GuideCard.count).to eq 0
     expect(SubGuideCard.count).to eq 0
     gcls.import
     expect(GuideCard.count).to eq 12
