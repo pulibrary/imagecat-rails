@@ -10,6 +10,13 @@ class CardImageLoadingService
     @progressbar = progressbar || ProgressBar.create(format: "\e[1;35m%t: |%B|\e[0m")
   end
 
+  def import
+    @progressbar = ProgressBar.create(format: "\e[1;35m%t: |%B|\e[0m")
+    import_guide_card_images
+    @progressbar = ProgressBar.create(format: "\e[1;35m%t: |%B|\e[0m")
+    import_sub_guide_images
+  end
+
   # For each SubGuideCard, take its path and query s3 to get all of the image names
   # for that path. For each image file, create a CardImage object with the path and
   # image name.
