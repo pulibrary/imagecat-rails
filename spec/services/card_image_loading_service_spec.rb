@@ -5,6 +5,10 @@ require 'ruby-progressbar/outputs/null'
 
 describe CardImageLoadingService do
   let(:cils) { described_class.new(progressbar: ProgressBar.create(output: ProgressBar::Outputs::Null)) }
+  let(:gcls) do
+    GuideCardLoadingService.new(csv_location: Rails.root.join('spec', 'fixtures', 'guide_card_fixture.csv'),
+                                progressbar: ProgressBar.create(output: ProgressBar::Outputs::Null))
+  end
   let(:sgls) do
     SubGuideLoadingService.new(csv_location: Rails.root.join('spec', 'fixtures', 'subguide_card_fixture.csv'),
                                progressbar: ProgressBar.create(output: ProgressBar::Outputs::Null))
@@ -21,12 +25,23 @@ describe CardImageLoadingService do
     expect(cils).to be_instance_of described_class
   end
 
-  it 'imports all card images' do
+  it 'imports all SubGuideCard images' do
     sgls.import
     expect(CardImage.count).to eq 0
     cils.import
     expect(CardImage.count).to eq 14
     images = CardImage.where(path: '9/0091/A3037')
+    expect(images.map(&:image_name)).to contain_exactly('imagecat-disk9-0091-A3037-1358.0110.tif', 'imagecat-disk9-0091-A3037-1358.0111.tif')
+  end
+
+  it 'imports all GuideCard images' do
+    expect(GuideCard.count).to eq 0
+    gcls.import
+    expect(GuideCard.count).to eq 12
+    expect(CardImage.count).to eq 0
+    cils.import_guide_card_image
+    expect(CardImage.count).to eq 24
+    images = CardImage.where(path: '14/0001/A1003')
     expect(images.map(&:image_name)).to contain_exactly('imagecat-disk9-0091-A3037-1358.0110.tif', 'imagecat-disk9-0091-A3037-1358.0111.tif')
   end
 

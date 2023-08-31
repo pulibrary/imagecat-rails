@@ -25,6 +25,17 @@ class CardImageLoadingService
     end
   end
 
+  def import_guide_card_image
+    @progressbar.total = GuideCard.all.count
+    GuideCard.all.each_with_index do |gc, index|
+      progress_bar_random_color if (index % 100).zero?
+      @progressbar.increment
+      image_array(gc.path).each do |file_name|
+        create_card_image(gc, file_name)
+      end
+    end
+  end
+
   # returns something like
   # ["imagecat-disk9-0091-A3037-1358.0110.tif", "imagecat-disk9-0091-A3037-1358.0111.tif"]
   def image_array(path)
