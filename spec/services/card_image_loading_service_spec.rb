@@ -19,6 +19,8 @@ describe CardImageLoadingService do
 
   before do
     allow(cils).to receive(:s3_image_list).with(anything).and_return(s3_response)
+    # Any card with a path of "sub" will not have any images
+    allow(cils).to receive(:s3_image_list).with('sub').and_return('')
   end
 
   it 'can instantiate' do
@@ -29,7 +31,7 @@ describe CardImageLoadingService do
     sgls.import
     expect(CardImage.count).to eq 0
     cils.import_sub_guide_images
-    expect(CardImage.count).to eq 14
+    expect(CardImage.count).to eq 8
     images = CardImage.where(path: '9/0091/A3037')
     expect(images.map(&:image_name)).to contain_exactly('imagecat-disk9-0091-A3037-1358.0110.tif', 'imagecat-disk9-0091-A3037-1358.0111.tif')
   end
@@ -40,7 +42,7 @@ describe CardImageLoadingService do
     expect(GuideCard.count).to eq 12
     expect(CardImage.count).to eq 0
     cils.import_guide_card_images
-    expect(CardImage.count).to eq 24
+    expect(CardImage.count).to eq 22
     images = CardImage.where(path: '14/0001/A1003')
     expect(images.map(&:image_name)).to contain_exactly('imagecat-disk9-0091-A3037-1358.0110.tif', 'imagecat-disk9-0091-A3037-1358.0111.tif')
   end
@@ -65,6 +67,9 @@ describe CardImageLoadingService do
     expect(SubGuideCard.count).to eq 7
     expect(CardImage.count).to eq 0
     cils.import
-    expect(CardImage.count).to eq 38
+    expect(CardImage.count).to eq 30
+    # If you reimport, it doesn't create duplicate rows
+    cils.import
+    expect(CardImage.count).to eq 30
   end
 end

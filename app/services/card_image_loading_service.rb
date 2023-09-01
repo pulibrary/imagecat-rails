@@ -59,6 +59,9 @@ class CardImageLoadingService
   private
 
   def create_card_image(sgc, file_name)
+    ci = CardImage.find_by(path: sgc.path, image_name: file_name)
+    return if ci
+
     ci = CardImage.new
     ci.path = sgc.path
     ci.image_name = file_name
