@@ -55,4 +55,16 @@ describe CardImageLoadingService do
     cils.import_sub_guide_images
     expect(cils.progressbar.to_h['percentage']).to eq 100
   end
+
+  it 'imports both GuideCard and SubGuideCard images' do
+    expect(GuideCard.count).to eq 0
+    expect(SubGuideCard.count).to eq 0
+    gcls.import
+    expect(GuideCard.count).to eq 12
+    sgls.import
+    expect(SubGuideCard.count).to eq 7
+    expect(CardImage.count).to eq 0
+    cils.import
+    expect(CardImage.count).to eq 38
+  end
 end
