@@ -25,6 +25,15 @@ body {
     color: orange
 }
 
+#sg_list_header {
+    color: orange
+}
+
+#sg_index {
+    list-style-type: none;
+    font-size: 20px;
+}
+
 .pagination {
     display: flex;
     list-style: none;

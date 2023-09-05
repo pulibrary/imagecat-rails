@@ -2,7 +2,7 @@
 
 
 <h3>List of SubGuide Cards</h3>
-<ul>
+<ul id="sg_index">
   <% @sub_guide_cards.each do |sub_guide| %>
     <li> <%= link_to sub_guide.heading, sub_guide_card_path(sub_guide.id) %> </li>
   <% end %>
