@@ -6,10 +6,10 @@
     <% end %>
   </ul>
 <% end %>
-<% @card_images.each do |image| %>
-  <ul>
+ <% @card_images.each do |image| %>
+   <ul>
     <%= image_tag(image.iiif_url) %>
-  </ul>
-<% end %>
+   </ul> 
+ <% end %>
 
-<%= paginate @sub_guide_card.children.each %>
+<%= paginate @card_images %>
