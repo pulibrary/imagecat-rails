@@ -8,6 +8,7 @@ class GuideCardsController < ApplicationController
 
   def search
     @exact_match = GuideCard.find_by(heading: params[:search_term])
+    @exact_match = GuideCard.where('heading < ?', 'Aarons').limit(1).order(heading: :desc).first if @exact_match.nil?
     @guide_cards = GuideCard.page(@exact_match.index_page)
   end
 
