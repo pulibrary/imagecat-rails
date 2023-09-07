@@ -1,0 +1,13 @@
+<h1 id="list_header"> GuideCard Index </h1>
+
+<% @guide_cards.each do |card| %>
+  <h2>
+  <% if @exact_match.id == card.id %>
+    <%= link_to "* #{card.heading}", guide_card_path(card.id) %>
+    <% else %>
+      <%= link_to card.heading, guide_card_path(card.id) %>
+    <% end %>
+  </h2>
+<% end %>
+
+<%= paginate @guide_cards %>
