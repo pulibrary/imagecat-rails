@@ -10,7 +10,12 @@ Please enter a search string to go to the guide card nearest that search string.
 
 <p> GuideCards Link (Temporary): <%= link_to("GuideCards index", guide_cards_path) %></p>
 
-<p> Search box will go here </p>
+<p> Please enter a search string to go to the guide card nearest that search string. </p>
+
+<%= form_tag "/search", method: "GET" do %>
+  <%= text_field_tag :search_term, params[:search_term] %> 
+  <%= submit_tag "Go" %>
+<% end %>
 
 <p><%= link_to("Filing rules", "https://imagecat2.princeton.edu/ecc/cardhelp.html") %></p>
 

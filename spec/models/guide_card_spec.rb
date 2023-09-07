@@ -35,4 +35,23 @@ RSpec.describe GuideCard, type: :model do
       end
     end
   end
+
+  context 'knows what page of the index it should be on' do
+    it 'id 2 is on the first page' do
+      guide_card2 = GuideCard.create(id: 2)
+      expect(guide_card2.index_page).to eq 1
+    end
+    it 'id 11 is on the second page' do
+      guide_card11 = GuideCard.create(id: 11)
+      expect(guide_card11.index_page).to eq 2
+    end
+    it 'id 30 is on the third page' do
+      guide_card30 = GuideCard.create(id: 30)
+      expect(guide_card30.index_page).to eq 3
+    end
+    it 'id 19 is on the second page' do
+      guide_card19 = GuideCard.create(id: 19)
+      expect(guide_card19.index_page).to eq 2
+    end
+  end
 end

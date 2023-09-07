@@ -3,6 +3,7 @@
 Rails.application.routes.draw do
   root 'welcome#index'
   get '/welcome/index'
+  get '/search/', to: 'guide_cards#search'
   get 'guide_cards/', to: 'guide_cards#index'
   get 'guide_cards/:id', to: 'guide_cards#show'
   resources :guide_cards
