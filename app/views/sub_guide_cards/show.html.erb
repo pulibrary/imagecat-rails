@@ -1,3 +1,8 @@
+<p>
+Cards 1 - <%= @card_images.count %> of <%= @card_images.count %> following the GuideCard <b><%= @sub_guide_card.heading %></b>.
+To go to another section of this card set, enter a number from 1 to <%= @card_images.count %> and click on the Go button.
+</p>
+
 <h2>SubGuide: <%= @sub_guide_card.heading %></h2>
 <% if @sub_guide_card.children.present? %>
   <ul>
