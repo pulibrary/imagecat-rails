@@ -7,8 +7,8 @@ class GuideCardsController < ApplicationController
   end
 
   def search
-    @exact_match = GuideCard.find_by(heading: params[:search_term])
-    @guide_cards = GuideCard.page(@exact_match.index_page)
+    @match = GuideCard.search_result(params[:search_term])
+    @guide_cards = GuideCard.page(@match.index_page)
   end
 
   def show

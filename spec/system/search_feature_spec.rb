@@ -15,5 +15,11 @@ RSpec.describe 'Search Feature', type: :system, js: true do
       click_on 'Go'
       expect(page).to have_link('* Aaron')
     end
+    it 'finds the closest match if there is no exact match' do
+      visit '/'
+      fill_in 'search_term', with: 'Aarons'
+      click_on 'Go'
+      expect(page).to have_link('* Aaron')
+    end
   end
 end
