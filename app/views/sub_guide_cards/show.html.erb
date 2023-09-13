@@ -1,9 +1,8 @@
-<p>
-Cards 1 - <%= @card_images.count %> of <%= @card_images.count %> following the GuideCard <b><%= @sub_guide_card.heading %></b>.
-To go to another section of this card set, enter a number from 1 to <%= @card_images.count %> and click on the Go button.
-</p>
-
 <h2>SubGuide: <%= @sub_guide_card.heading %></h2>
+<p><%= page_entries_info @card_images, entry_name: 'card' %></p>
+
+<%= paginate @card_images %>
+
 <% if @sub_guide_card.children.present? %>
   <ul>
     <% @sub_guide_card.children.each do |sub_guide| %>
@@ -13,7 +12,7 @@ To go to another section of this card set, enter a number from 1 to <%= @card_im
 <% end %>
  <% @card_images.each do |image| %>
    <ul>
-    <%= image_tag(image.iiif_url) %>
+    <%= image_tag(image.iiif_url, alt: "Catalog Card") %>
    </ul> 
  <% end %>
 
