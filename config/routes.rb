@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get 'guide_cards/:id', to: 'guide_cards#show'
   resources :guide_cards
   get 'sub_guide_cards/', to: 'sub_guide_cards#index'
-  get 'sub_guide_cards/:id', to: 'sub_guide_cards#show'
+  get 'sub_guide_cards/:id/:page', to: 'sub_guide_cards#show'
   resources :sub_guide_cards
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

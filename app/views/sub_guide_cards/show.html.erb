@@ -1,4 +1,8 @@
 <h2>SubGuide: <%= @sub_guide_card.heading %></h2>
+<p><%= page_entries_info @card_images, entry_name: 'card' %></p>
+
+<%= paginate @card_images %>
+
 <% if @sub_guide_card.children.present? %>
   <ul>
     <% @sub_guide_card.children.each do |sub_guide| %>
@@ -6,6 +10,10 @@
     <% end %>
   </ul>
 <% end %>
-<% @card_images.each do |image| %>
-  <%= image_tag(image.iiif_url) %>
-<% end %>
+ <% @card_images.each do |image| %>
+   <ul>
+    <%= image_tag(image.iiif_url, alt: "Catalog Card") %>
+   </ul> 
+ <% end %>
+
+<%= paginate @card_images %>
