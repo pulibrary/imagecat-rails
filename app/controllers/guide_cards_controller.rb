@@ -3,12 +3,17 @@
 # controller for GuideCards
 class GuideCardsController < ApplicationController
   def index
-    @guide_cards = GuideCard.page(params[:page])
+    @guide_cards = GuideCard.order(:heading).page(params[:page])
   end
 
   def search
     @match = GuideCard.search_result(params[:search_term])
-    @guide_cards = GuideCard.page(@match.index_page)
+    @guide_cards = 
+      if (params[:page].present?)
+        GuideCard.order(:heading).page(params[:page])
+      else
+        GuideCard.order(:heading).page(@match.index_page)
+      end
   end
 
   def show

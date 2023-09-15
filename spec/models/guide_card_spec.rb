@@ -53,5 +53,9 @@ RSpec.describe GuideCard, type: :model do
       guide_card19 = GuideCard.create(id: 19)
       expect(guide_card19.index_page).to eq 2
     end
+    it 'id 27021 is on page 2702' do
+      guide_card27021 = GuideCard.create(id: 27021)
+      expect(guide_card27021.index_page).to eq 2702
+    end
   end
 end
