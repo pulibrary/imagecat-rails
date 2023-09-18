@@ -8,8 +8,8 @@ class GuideCardsController < ApplicationController
 
   def search
     @match = GuideCard.search_result(params[:search_term])
-    @guide_cards = 
-      if (params[:page].present?)
+    @guide_cards =
+      if params[:page].present?
         GuideCard.order(:heading).page(params[:page])
       else
         GuideCard.order(:heading).page(@match.index_page)
