@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
-# controller for GuideCards
-
 # Note that these cards must be ordered by id, not heading. This is
 # counterintuitive, because it results in a thing that might not look like
 # alphabetical order. However, it is the order of the card catalog, which is wanted by the stakeholder.
 
+# controller for GuideCards
 class GuideCardsController < ApplicationController
   def index
     @guide_cards = GuideCard.order(:id).page(params[:page])
