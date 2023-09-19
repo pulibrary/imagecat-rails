@@ -1,14 +1,23 @@
 # frozen_string_literal: true
 
+# Note that these cards must be ordered by id, not heading. This is
+# counterintuitive, because it results in a thing that might not look like
+# alphabetical order. However, it is the order of the card catalog, which is wanted by the stakeholder.
+
 # controller for GuideCards
 class GuideCardsController < ApplicationController
   def index
-    @guide_cards = GuideCard.page(params[:page])
+    @guide_cards = GuideCard.order(:id).page(params[:page])
   end
 
   def search
     @match = GuideCard.search_result(params[:search_term])
-    @guide_cards = GuideCard.page(@match.index_page)
+    @guide_cards =
+      if params[:page].present?
+        GuideCard.order(:id).page(params[:page])
+      else
+        GuideCard.order(:id).page(@match.index_page)
+      end
   end
 
   def show

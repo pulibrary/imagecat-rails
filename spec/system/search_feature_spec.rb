@@ -9,11 +9,13 @@ RSpec.describe 'Search Feature', type: :system, js: true do
   end
 
   describe 'search bar on front page' do
-    it 'returns an index of GuideCards with search term indicated' do
+    it 'returns an index of GuideCards with search term indicated and it paginates' do
       visit '/'
       fill_in 'search_term', with: 'Aaron'
       click_on 'Go'
       expect(page).to have_link('* Aaron')
+      click_on '3'
+      expect(page).to have_link('Abaza')
     end
     it 'finds the closest match if there is no exact match' do
       visit '/'
