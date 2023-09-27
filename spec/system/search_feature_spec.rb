@@ -23,5 +23,13 @@ RSpec.describe 'Search Feature', type: :system, js: true do
       click_on 'Go'
       expect(page).to have_link('* Aaron')
     end
+    it 'allows navigation back to page 1' do
+      visit '/'
+      fill_in 'search_term', with: 'Aaron'
+      click_on 'Go'
+      expect(page).to have_link('* Aaron')
+      click_on '1'
+      expect(page).to have_link('AALAS')
+    end
   end
 end
