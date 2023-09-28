@@ -1,7 +1,6 @@
 <h2>Guide: <%= @guide_card.heading %></h2>
 
-<h3>Return to <%= link_to("Home Page", root_path) %> to enter a new search.</h3>
-
+<%= render "shared/return_to_home" %>
 
 <h3>List of SubGuide Cards</h3>
 <ul id="sg_index">
