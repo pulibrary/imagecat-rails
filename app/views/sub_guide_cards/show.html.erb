@@ -1,6 +1,8 @@
 <h2>SubGuide: <%= @sub_guide_card.heading %></h2>
 <p><%= page_entries_info @card_images, entry_name: 'card' %></p>
 
+<h3>Return to <%= link_to("Home Page", root_path) %> to enter a new search.</h3>
+
 <%= paginate @card_images %>
 
 <% if @sub_guide_card.children.present? %>
