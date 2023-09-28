@@ -1,5 +1,7 @@
 <h1 id="list_header"> GuideCard Index </h1>
 
+<%= render "shared/return_to_home" %>
+
 <% @guide_cards.each do |card| %>
   <h2><%= link_to card.heading, guide_card_path(card.id) %></h2>
 <% end %>
