@@ -29,4 +29,16 @@ RSpec.describe 'GuideCards', type: :system, js: true do
       expect(page).to have_text 'Manuscripts'
     end
   end
+
+  describe 'show page' do
+    it 'displays card images' do
+      ci = CardImage.new
+      ci.path = GuideCard.find(2).path
+      ci.image_name = 'imagecat-disk1-0675-B1764-0000.0219.tif'
+      ci.save
+      visit '/guide_cards/2'
+      expect(page).to have_selector('img')
+      expect(page).to have_selector('img[alt]')
+    end
+  end
 end
