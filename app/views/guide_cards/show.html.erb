@@ -8,3 +8,9 @@
     <li> <%= link_to sub_guide.heading, sub_guide_card_path(sub_guide.id) %> </li>
   <% end %>
 </ul>
+
+ <% @card_images.each do |image| %>
+   <ul>
+    <%= image_tag(image.iiif_url, alt: "Catalog Card") %>
+   </ul> 
+ <% end %>
