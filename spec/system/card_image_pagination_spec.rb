@@ -6,7 +6,7 @@ RSpec.describe 'Card Images Pagination', type: :system, js: true do
   let(:guide_card_fixture) { Rails.root.join('spec', 'fixtures', 'guide_card_fixture.csv') }
   before do
     GuideCardLoadingService.new(csv_location: guide_card_fixture).import
-    for i in 1..21 do 
+    (1..21).each do |i|
       ci = CardImage.new
       ci.path = '14/0001/B4491'
       ci.image_name = "fake_image_#{i}.jpg"
