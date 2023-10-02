@@ -9,8 +9,10 @@
   </ul>
 <% end %>
 
- <% @card_images.each do |image| %>
+<% @card_images.each do |image| %>
    <ul>
     <%= image_tag(image.iiif_url, alt: "Catalog Card") %>
    </ul> 
- <% end %>
+<% end %>
+
+<%= paginate @card_images %>
