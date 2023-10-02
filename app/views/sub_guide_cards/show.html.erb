@@ -1,8 +1,6 @@
 <h2>SubGuide: <%= @sub_guide_card.heading %></h2>
 <p><%= page_entries_info @card_images, entry_name: 'card' %></p>
 
-<%= render "shared/return_to_home" %>
-
 <%= paginate @card_images %>
 
 <% if @sub_guide_card.children.present? %>
