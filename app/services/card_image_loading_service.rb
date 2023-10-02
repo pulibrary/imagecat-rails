@@ -43,6 +43,19 @@ class CardImageLoadingService
     end
   end
 
+  def prioritized_image_loading(path)
+    image_array = image_array(path)
+    image_array.each do |image|
+      ci = CardImage.find_by(path:, image_name: image)
+      next if ci
+
+      ci = CardImage.new
+      ci.path = path
+      ci.image_name = image
+      ci.save
+    end
+  end
+
   # returns something like
   # ["imagecat-disk9-0091-A3037-1358.0110.tif", "imagecat-disk9-0091-A3037-1358.0111.tif"]
   def image_array(path)
