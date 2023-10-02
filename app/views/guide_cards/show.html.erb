@@ -1,16 +1,18 @@
 <h2>Guide: <%= @guide_card.heading %></h2>
 
-<%= render "shared/return_to_home" %>
+<% if @sub_guide_cards.present? %>
+  <h3>SubGuide Cards</h3>
+  <ul id="sg_index">
+    <% @sub_guide_cards.each do |sub_guide| %>
+      <li> <%= link_to sub_guide.heading, sub_guide_card_path(sub_guide.id) %> </li>
+    <% end %>
+  </ul>
+<% end %>
 
-<h3>List of SubGuide Cards</h3>
-<ul id="sg_index">
-  <% @sub_guide_cards.each do |sub_guide| %>
-    <li> <%= link_to sub_guide.heading, sub_guide_card_path(sub_guide.id) %> </li>
-  <% end %>
-</ul>
-
- <% @card_images.each do |image| %>
+<% @card_images.each do |image| %>
    <ul>
     <%= image_tag(image.iiif_url, alt: "Catalog Card") %>
    </ul> 
- <% end %>
+<% end %>
+
+<%= paginate @card_images %>

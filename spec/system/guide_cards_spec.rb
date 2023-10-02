@@ -41,4 +41,11 @@ RSpec.describe 'GuideCards', type: :system, js: true do
       expect(page).to have_selector('img[alt]')
     end
   end
+
+  context 'when a GuideCard has no SubGuide cards' do
+    it 'displays text to that effect' do
+      visit '/guide_cards/2'
+      expect(page).not_to have_text('SubGuide Cards')
+    end
+  end
 end
