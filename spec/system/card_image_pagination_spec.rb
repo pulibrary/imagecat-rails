@@ -17,11 +17,11 @@ RSpec.describe 'Card Images Pagination', type: :system, js: true do
   describe 'GuideCards show page' do
     it 'displays and paginates through card images' do
       visit '/guide_cards/2'
-      expect(page.all("div#main-content ul img").count).to eq 10
-      expect(page.all("div#main-content ul img").last[:src]).to match /fake_image_10.jpg/
+      expect(page.all('div#main-content ul img').count).to eq 10
+      expect(page.all('div#main-content ul img').last[:src]).to match(/fake_image_10.jpg/)
       expect(page).to have_link('Next', href: '/guide_cards/2?page=2')
       click_link('Next')
-      expect(page.all("div#main-content ul img")[3][:src]).to match /fake_image_14.jpg/
+      expect(page.all('div#main-content ul img')[3][:src]).to match(/fake_image_14.jpg/)
     end
   end
 end
