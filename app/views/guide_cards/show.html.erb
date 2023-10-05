@@ -9,10 +9,15 @@
   </ul>
 <% end %>
 
-<% @card_images.each do |image| %>
-   <ul>
-    <%= image_tag(image.iiif_url, alt: "Catalog Card") %>
-   </ul> 
-<% end %>
+<p><%= page_entries_info @card_images, entry_name: 'card' %></p>
 
+<ul id="card_image_list">
+  <% @card_images.each_with_index do |image, index| %>
+    <% p = (params[:page] || 1).to_i 
+      i = index + 1
+      number = ((p - 1) * 10) + i %>
+    <li><%= "Card #{number} of #{@total_cards}" %>
+    <%= image_tag(image.iiif_url, alt: "Catalog Card") %></li>
+<% end %>
+   </ul> 
 <%= paginate @card_images %>

@@ -10,9 +10,9 @@
     <% end %>
   </ul>
 <% end %>
- <% @card_images.each do |image| %>
+ <% @card_images.each_with_index do |image, index| %>
    <ul>
-    <%= image_tag(image.iiif_url, alt: "Catalog Card") %>
+    <li><%= image_tag(image.iiif_url, alt: "Catalog Card") %></li>
    </ul> 
  <% end %>
 
