@@ -7,5 +7,6 @@ class SubGuideCardsController < ApplicationController
   def show
     @sub_guide_card = SubGuideCard.find(params[:id])
     @card_images = CardImage.where(path: @sub_guide_card.path).page(params[:page])
+    @total_cards = CardImage.where(path: @sub_guide_card.path).count
   end
 end

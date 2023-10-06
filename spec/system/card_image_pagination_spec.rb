@@ -23,7 +23,7 @@ RSpec.describe 'Card Images Pagination', type: :system, js: true do
         expect(last_li).to have_content 'Card 10 of 21'
       end
       expect(page).to have_link('Next', href: '/guide_cards/2?page=2')
-      click_link('Next')
+      page.all('a', text: 'Next').last.click
       expect(page.all('div#main-content ul img')[3][:src]).to match(/fake_image_14.jpg/)
       within(page.all('ul#card_image_list li')[3]) do |last_li|
         expect(last_li.find('img')['src']).to match(/fake_image_14.jpg/)

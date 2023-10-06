@@ -19,6 +19,7 @@ RSpec.describe 'SubGuideCards', type: :system, js: true do
       visit '/sub_guide_cards/2'
       expect(page).to have_selector('img')
       expect(page).to have_selector('img[alt]')
+      expect(page).to have_content('Card 1 of 1')
     end
 
     it 'links to child SubGuideCards' do
