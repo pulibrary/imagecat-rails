@@ -20,7 +20,7 @@ RSpec.describe 'GuideCards', type: :system, js: true do
     end
   end
 
-  describe 'nested SubGuides with image display' do
+  describe 'nested SubGuides with display' do
     it 'shows the top-level guide with subguides underneath' do
       visit '/guide_cards/2869'
       expect(page).to have_text 'Bible'
@@ -40,10 +40,17 @@ RSpec.describe 'GuideCards', type: :system, js: true do
       expect(page).to have_selector('img')
       expect(page).to have_selector('img[alt]')
     end
+
+    context 'when there are no images' do
+      it 'does not mention them' do
+        visit '/guide_cards/2'
+        expect(page).not_to have_text 'No cards found'
+      end
+    end
   end
 
   context 'when a GuideCard has no SubGuide cards' do
-    it 'displays text to that effect' do
+    it 'does not show a subguide cards list heading' do
       visit '/guide_cards/2'
       expect(page).not_to have_text('SubGuide Cards')
     end
