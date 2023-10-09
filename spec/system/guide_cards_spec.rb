@@ -31,14 +31,14 @@ RSpec.describe 'GuideCards', type: :system, js: true do
   end
 
   describe 'show page' do
-    it 'displays card images' do
-      ci = CardImage.new
-      ci.path = GuideCard.find(2).path
-      ci.image_name = 'imagecat-disk1-0675-B1764-0000.0219.tif'
-      ci.save
+    it 'displays card images as links' do
+      CardImage.create(
+        path: GuideCard.find(2).path,
+        image_name: 'imagecat-disk1-0675-B1764-0000.0219.tif'
+      )
       visit '/guide_cards/2'
-      expect(page).to have_selector('img')
-      expect(page).to have_selector('img[alt]')
+      max_url = 'https://puliiif.princeton.edu/iiif/2/imagecat-disk1-0675-B1764-0000.0219/full/max/0/default.jpg'
+      expect(page).to have_selector("a[href=\"#{max_url}\"] img[alt]")
     end
 
     context 'when there are no images' do
