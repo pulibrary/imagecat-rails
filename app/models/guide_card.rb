@@ -7,7 +7,7 @@ class GuideCard < ApplicationRecord
 
   # First, try to find an exact match. Otherwise, find the closest match.
   def self.search_result(term)
-    match = GuideCard.find_by(heading: term)
+    match = GuideCard.find_by('heading ilike ?', term)
     return match if match.present?
 
     GuideCard.where('heading < ?', term).order(heading: :desc).limit(1).first
