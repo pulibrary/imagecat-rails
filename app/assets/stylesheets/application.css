@@ -13,11 +13,28 @@
  *= require_tree .
  *= require_self
  */
+
+html, body, div.lux {
+  height: 100%;
+}
+
 body {
     margin: 0;
 }
 
+/* wraps main content to make lux work */
+/* styled to ensure sticky footer */
+div.lux {
+  display: flex;
+  flex-direction: column;
+}
+
+.homepage-img {
+  margin-top: 1em;
+}
+
 #main-content {
+  flex: 1 0 auto; /* part of the sticky footer setup */
   margin: 20px 20px;
   /* ensure content stays within boundaries of header / footer, which have
    * default max-width of 1170, see
@@ -25,6 +42,10 @@ body {
    * and https://github.com/pulibrary/lux/issues/397
    */
   padding: 0 calc(calc(calc(100% - 1170px) / 2));
+}
+
+.lux-library-footer {
+  flex-shrink: 0; /* part of sticky footer */
 }
 
 #list_header {
