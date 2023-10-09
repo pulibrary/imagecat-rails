@@ -31,5 +31,11 @@ RSpec.describe 'Search Feature', type: :system, js: true do
       click_on '1'
       expect(page).to have_link('AALAS')
     end
+    it 'ignores capitalization' do
+      visit '/'
+      fill_in 'search_term', with: 'aaron'
+      click_on 'Go'
+      expect(page).to have_link('* Aaron')
+    end
   end
 end
