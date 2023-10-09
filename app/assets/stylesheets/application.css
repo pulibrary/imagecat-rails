@@ -18,7 +18,13 @@ body {
 }
 
 #main-content {
-    margin: 20px 100px;
+  margin: 20px 20px;
+  /* ensure content stays within boundaries of header / footer, which have
+   * default max-width of 1170, see
+   * https://pulibrary.github.io/lux/docs/#/Patterns/LibraryHeader
+   * and https://github.com/pulibrary/lux/issues/397
+   */
+  padding: 0 calc(calc(calc(100% - 1170px) / 2));
 }
 
 #list_header {
