@@ -61,6 +61,14 @@ div.lux {
     font-size: 20px;
 }
 
+#card_image_list {
+  list-style: none;
+  li img {
+    border: 2px solid;
+    margin: 10px;
+  }
+}
+
 .pagination {
     display: flex;
     list-style: none;
