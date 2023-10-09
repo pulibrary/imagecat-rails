@@ -6,7 +6,7 @@
     <% p = (params[:page] || 1).to_i 
       i = index + 1
       number = ((p - 1) * 10) + i %>
-    <li><%= "Card #{number} of #{@total_cards}" %>
+    <li><%= "Card #{number} of #{@total_cards}" %><br />
     <%= image_tag(image.iiif_url, alt: "Catalog Card") %></li>
   <% end %>
 </ul> 
