@@ -7,7 +7,7 @@
       i = index + 1
       number = ((p - 1) * 10) + i %>
     <li><%= "Card #{number} of #{@total_cards}" %><br />
-    <%= image_tag(image.iiif_url, alt: "Catalog Card") %></li>
+    <%= link_to image_tag(image.iiif_url, alt: "Catalog Card"), image.iiif_max_url %></li>
   <% end %>
 </ul> 
 

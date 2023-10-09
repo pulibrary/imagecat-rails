@@ -15,5 +15,6 @@ RSpec.describe CardImage, type: :model do
     ci.image_name = 'imagecat-disk1-0675-B1764-0000.0219.tif'
     ci.save
     expect(ci.iiif_url).to eq 'https://puliiif.princeton.edu/iiif/2/imagecat-disk1-0675-B1764-0000.0219/full/,500/0/default.jpg'
+    expect(ci.iiif_max_url).to eq 'https://puliiif.princeton.edu/iiif/2/imagecat-disk1-0675-B1764-0000.0219/full/max/0/default.jpg'
   end
 end
