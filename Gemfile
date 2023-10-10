@@ -8,6 +8,7 @@ ruby '3.2.0'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.0.4'
 
+gem 'async'
 gem 'bcrypt_pbkdf'
 gem 'ed25519'
 

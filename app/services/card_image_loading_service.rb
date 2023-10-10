@@ -2,6 +2,8 @@
 
 require 'ruby-progressbar'
 require 'ruby-progressbar/outputs/null'
+require 'async/semaphore'
+require 'async/barrier'
 
 # Class for card image loading service
 class CardImageLoadingService
@@ -13,16 +15,31 @@ class CardImageLoadingService
   end
 
   def import
-    (1..22).each { |disk| import_disk(disk) }
+    barrier = Async::Barrier.new
+    Sync do
+      semaphore = Async::Semaphore.new(10, parent: barrier)
+
+      (1..22).map do |disk|
+        semaphore.async do
+          import_disk(disk)
+        end
+      end.map(&:wait)
+    ensure
+      barrier.stop
+    end
   end
 
   def import_disk(disk)
     logger.info("Fetching disk #{disk} file list")
     filenames = disk_array(disk)
-    progress = progress_bar(filenames.count)
-    filenames.each do |file_name|
-      progress.increment
-      find_or_create_card_image(file_name)
+    progress_bar.total += filenames.count
+    Sync do |task|
+      filenames.map do |file_name|
+        task.async do
+          progress_bar.increment
+          find_or_create_card_image(file_name)
+        end
+      end.map(&:wait)
     end
   end
 
@@ -48,7 +65,11 @@ class CardImageLoadingService
     CardImage.create(path: path, image_name: file_name)
   end
 
-  def progress_bar(total)
+  def progress_bar
+    @progress_bar ||= ProgressBar.create(format: '%a %e %P% Loading: %c from %C', output: progress_output, total: 0, title: 'Image import')
+  end
+
+  def progress_bar_old(total)
     ProgressBar.create(format: '%a %e %P% Loading: %c from %C', total: total, output: progress_output)
   end
 

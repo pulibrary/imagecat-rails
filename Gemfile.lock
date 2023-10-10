@@ -71,6 +71,11 @@ GEM
     airbrussh (1.4.1)
       sshkit (>= 1.6.1, != 1.7.0)
     ast (2.4.2)
+    async (2.6.4)
+      console (~> 1.10)
+      fiber-annotation
+      io-event (~> 1.1)
+      timers (~> 4.1)
     bcrypt_pbkdf (1.1.0)
     bindex (0.8.1)
     bootsnap (1.16.0)
@@ -103,6 +108,9 @@ GEM
       xpath (~> 3.2)
     coderay (1.1.3)
     concurrent-ruby (1.2.2)
+    console (1.23.2)
+      fiber-annotation
+      fiber-local
     coveralls_reborn (0.27.0)
       simplecov (~> 0.22.0)
       term-ansicolor (~> 1.7)
@@ -118,6 +126,8 @@ GEM
     dry-cli (1.0.0)
     ed25519 (1.3.0)
     erubi (1.12.0)
+    fiber-annotation (0.2.0)
+    fiber-local (1.0.0)
     globalid (1.1.0)
       activesupport (>= 5.0)
     i18n (1.12.0)
@@ -126,6 +136,7 @@ GEM
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
     io-console (0.6.0)
+    io-event (1.3.2)
     irb (1.6.3)
       reline (>= 0.3.0)
     jbuilder (2.11.5)
@@ -295,6 +306,7 @@ GEM
       tins (~> 1.0)
     thor (1.2.1)
     timeout (0.3.2)
+    timers (4.3.5)
     tins (1.32.1)
       sync
     turbo-rails (1.4.0)
@@ -330,6 +342,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  async
   bcrypt_pbkdf
   bootsnap
   capistrano (~> 3.10)
