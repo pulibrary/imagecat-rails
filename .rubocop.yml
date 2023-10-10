@@ -24,3 +24,6 @@ Metrics/MethodLength:
 Metrics/AbcSize:
   Exclude:
     - "app/services/guide_card_loading_service.rb"
+
+Style/HashSyntax:
+  EnforcedShorthandSyntax: never

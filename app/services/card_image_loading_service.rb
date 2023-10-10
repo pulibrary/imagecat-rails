@@ -43,14 +43,14 @@ class CardImageLoadingService
 
   def find_or_create_card_image(file_name)
     path = file_name.gsub('imagecat-disk', '').split('-')[0..-2].join('/')
-    ci = CardImage.find_by(path:, image_name: file_name)
+    ci = CardImage.find_by(path: path, image_name: file_name)
     return if ci
 
-    CardImage.create(path:, image_name: file_name)
+    CardImage.create(path: path, image_name: file_name)
   end
 
   def progress_bar(total)
-    ProgressBar.create(format: "%a %e %P% Loading: %c from %C", total: total, output: progress_output)
+    ProgressBar.create(format: '%a %e %P% Loading: %c from %C', total: total, output: progress_output)
   end
 
   def progress_output
