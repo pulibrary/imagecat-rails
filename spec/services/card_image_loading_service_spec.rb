@@ -3,66 +3,57 @@
 require 'rails_helper'
 
 describe CardImageLoadingService do
-  let(:cils) { described_class.new(suppress_progress: true) }
-  let(:gcls) do
+  let(:card_image_loader) { described_class.new(suppress_progress: true) }
+  let(:guide_card_loader) do
     GuideCardLoadingService.new(
       csv_location: Rails.root.join('spec', 'fixtures', 'guide_card_fixture.csv'),
       progressbar: ProgressBar.create(output: ProgressBar::Outputs::Null)
     )
   end
-  let(:sgls) do
+  let(:sub_guide_card_loader) do
     SubGuideLoadingService.new(
       csv_location: Rails.root.join('spec', 'fixtures', 'subguide_card_fixture.csv'),
       progressbar: ProgressBar.create(output: ProgressBar::Outputs::Null)
     )
   end
-  let(:s3_response) do
-    "2023-07-19 14:39:38       3422 imagecat-disk9-0091-A3037-1358.0110.tif\n2023-07-19 14:39:38       7010 imagecat-disk9-0091-A3037-1358.0111.tif\n"
-  end
 
-  before do
-    allow(cils).to receive(:s3_image_list).with(anything).and_return(s3_response)
-    # Any card with a path of "sub" will not have any images
-    allow(cils).to receive(:s3_image_list).with('sub').and_return('')
-  end
+  context 'new way' do
+    let(:s3_response_disk9) do
+      <<~HERE
+        2023-07-19 14:39:38       3422 imagecat-disk9-0091-A3037-1358.0110.tif
+        2023-07-19 14:39:38       7010 imagecat-disk9-0091-A3037-1358.0111.tif
+        2023-07-19 14:39:38       7010 imagecat-disk9-0091-A3038-0000.0001.tif
+        2023-07-19 14:39:38       7010 imagecat-disk9-0091-A3038-0000.0002.tif
+        2023-07-19 14:39:38       7010 imagecat-disk9-0091-A3038-0000.0003.tif
+        2023-07-19 14:39:38       7010 imagecat-disk9-0091-A3067-0000.0048.tif
+      HERE
+    end
+    let(:s3_response_disk14) do
+      <<~HERE
+        2023-07-19 14:39:38       3422 imagecat-disk14-0001-A1007-1358.0110.tif
+        2023-07-19 14:39:38       7010 imagecat-disk14-0001-A1007-1358.0111.tif
+        2023-07-19 14:39:38       7010 imagecat-disk14-0002-A1008-0000.0001.tif
+      HERE
+    end
+    before do
+      allow(card_image_loader).to receive(:s3_disk_list).with(anything).and_return('')
+      allow(card_image_loader).to receive(:s3_disk_list).with(9).and_return(s3_response_disk9)
+      allow(card_image_loader).to receive(:s3_disk_list).with(14).and_return(s3_response_disk14)
+    end
 
-  it 'imports all SubGuideCard images' do
-    sgls.import
-    expect(CardImage.count).to eq 0
-    cils.import_sub_guide_images
-    expect(CardImage.count).to eq 8
-    images = CardImage.where(path: '9/0091/A3037')
-    expect(images.map(&:image_name)).to contain_exactly('imagecat-disk9-0091-A3037-1358.0110.tif', 'imagecat-disk9-0091-A3037-1358.0111.tif')
-  end
-
-  it 'imports all GuideCard images' do
-    expect(GuideCard.count).to eq 0
-    gcls.import
-    expect(GuideCard.count).to eq 12
-    expect(CardImage.count).to eq 0
-    cils.import_guide_card_images
-    expect(CardImage.count).to eq 22
-    images = CardImage.where(path: '14/0001/A1003')
-    expect(images.map(&:image_name)).to contain_exactly('imagecat-disk9-0091-A3037-1358.0110.tif', 'imagecat-disk9-0091-A3037-1358.0111.tif')
-  end
-
-  it 'gets a list of images from s3' do
-    image_list = cils.s3_image_list('9/0091/A3037')
-    expect(image_list.split("\n").count).to eq 2
-  end
-
-  it 'imports both GuideCard and SubGuideCard images' do
-    expect(GuideCard.count).to eq 0
-    expect(SubGuideCard.count).to eq 0
-    gcls.import
-    expect(GuideCard.count).to eq 12
-    sgls.import
-    expect(SubGuideCard.count).to eq 7
-    expect(CardImage.count).to eq 0
-    cils.import
-    expect(CardImage.count).to eq 30
-    # If you reimport, it doesn't create duplicate rows
-    cils.import
-    expect(CardImage.count).to eq 30
+    it 'creates CardImage database entries based on the s3 listing' do
+      card_image_loader.import
+      expect(CardImage.find_by(image_name: 'imagecat-disk14-0002-A1008-0000.0001.tif').path).to eq '14/0002/A1008'
+      expect(CardImage.count).to eq 9
+      guide_card_loader.import
+      sub_guide_card_loader.import
+      gc = GuideCard.find_by(path: '14/0001/A1007')
+      expect(CardImage.where(path: gc.path).count).to eq 2
+      sgc = SubGuideCard.find_by(path: '9/0091/A3038')
+      expect(CardImage.where(path: sgc.path).count).to eq 3
+      # If you reimport, it doesn't create duplicate rows
+      card_image_loader.import
+      expect(CardImage.count).to eq 9
+    end
   end
 end
