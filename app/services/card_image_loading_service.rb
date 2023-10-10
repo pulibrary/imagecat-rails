@@ -37,8 +37,7 @@ class CardImageLoadingService
   # returns something like
   # "2023-07-19 14:39:38       3422 imagecat-disk9-0091-A3037-1358.0110.tif\n2023-07-19 14:39:38       7010 imagecat-disk9-0091-A3037-1358.0111.tif\n"
   def s3_disk_list(disk)
-    s3_query = "aws s3 ls s3://puliiif-production/imagecat-disk#{disk}-"
-    `#{s3_query}`
+    `aws s3 ls s3://puliiif-production/imagecat-disk#{disk}-`
   end
 
   def find_or_create_card_image(file_name)
