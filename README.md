@@ -49,21 +49,24 @@ We want to load in CSV files that contain GuideCard and SubGuideCard data, which
 
 To list all import services for the application: `rake -T | grep import`
 
-To import the GuideCard records: `rake import:import_guide_cards`
-To import the SubGuideCard records: `rake import:import_sub_guide_cards`
+To import the GuideCard records (takes about 3 minutes): `rake import:import_guide_cards`
+To import the SubGuideCard records (takes about 2 minutes): `rake import:import_sub_guide_cards`
 
-The CardImage records are the images that are included in the GuideCard and SubGuideCard records. These will take the longest to import (totaling ~1.5 million images).
+The CardImage records are the images that are included in the GuideCard and SubGuideCard records. There are 5,786,727 images. These take about 12 days to import.
 
 To import the CardImage records: `rake import:import_card_images`
 
-*Note*: AWS configuration will be required for your local machine to access the AWS lambda service (puliiif-production s3 bucket where the images are stored).
+*Note*: AWS configuration will be required for your local machine to access the images on AWS (puliiif-production s3 bucket where the images are stored).
 
 ### 1. Set up AWS account
 
 1. Go to [https://princeton.edu/aws](https://princeton.edu/aws) and log in with Princeton credentials.
-2. From the "Services" menu, select "IAM". (You might need to search for IAM in the search bar.) Under the "User" menu, create a new user. Use any user name you prefer, as long as it would be clear to your team mates that this name is associated with you. Choose AWS credential type "Access Key". 
-
-3. Record the Access Key ID and the Secret access key you'll get on the `Success` screen. You will need to add these to your local user profile when you set up AWS command line access.
+1. From the "Services" menu, select "IAM". (You might need to search for IAM in the search bar.) Under the "User" menu, create a new user. Use any user name you prefer, as long as it would be clear to your team mates that this name is associated with you.
+1. Add the user to the `iiifcloud` group.
+1. Create the user, and click on it in the user list.
+1. click "Create access key"
+1. Select use case: Local code; give it a name
+1. Record the Access Key ID and the Secret access key you'll get on the `Success` screen. You will need to add these to your local user profile when you set up AWS command line access.
 
 ### 2. Install and configure aws cli
 
@@ -72,6 +75,9 @@ To import the CardImage records: `rake import:import_card_images`
 2. Configure it using the Access key ID and Secret Access key attached to your account. Do this by running `aws configure` or following instructions [here](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-quickstart.html).
 
 - Use default region `us-east-1`
+
+- If you added the key to a new config stanza in your ~/.aws/credentials, you'll
+    need to run aws commands with the --profile command line option
 
 ## Install lux 
 
