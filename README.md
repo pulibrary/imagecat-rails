@@ -52,7 +52,7 @@ To list all import services for the application: `rake -T | grep import`
 To import the GuideCard records (takes about 3 minutes): `rake import:import_guide_cards`
 To import the SubGuideCard records (takes about 2 minutes): `rake import:import_sub_guide_cards`
 
-The CardImage records are the images that are included in the GuideCard and SubGuideCard records. There are 5,786,727 images. These take about 12 days to import.
+The CardImage records are the images that are included in the GuideCard and SubGuideCard records. There are 5,786,727 images. These are estimated to take about 1 day to import.
 
 To import the CardImage records: `rake import:import_card_images`
 
