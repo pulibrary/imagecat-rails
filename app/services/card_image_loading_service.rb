@@ -1,31 +1,28 @@
 # frozen_string_literal: true
 
 require 'ruby-progressbar'
+require 'ruby-progressbar/outputs/null'
 
 # Class for card image loading service
 class CardImageLoadingService
-  attr_reader :progressbar
+  attr_reader :suppress_progress
 
-  def initialize(progressbar: nil)
-    @progressbar = progressbar || ProgressBar.create(format: "\e[1;35m%t: |%B|\e[0m")
+  def initialize(suppress_progress: false)
+    @suppress_progress = suppress_progress
   end
 
   def import
-    @progressbar = ProgressBar.create(format: "\e[1;35m%t: |%B|\e[0m")
     import_guide_card_images
-    @progressbar = ProgressBar.create(format: "\e[1;35m%t: |%B|\e[0m")
     import_sub_guide_images
   end
 
   # For each SubGuideCard, take its path and query s3 to get all of the image names
   # for that path. For each image file, create a CardImage object with the path and
   # image name.
-
   def import_sub_guide_images
-    @progressbar.total = SubGuideCard.all.count
-    SubGuideCard.all.each_with_index do |sgc, index|
-      progress_bar_random_color if (index % 100).zero?
-      @progressbar.increment
+    progressbar = progress_bar(SubGuideCard.count)
+    SubGuideCard.all.each do |sgc|
+      progressbar.increment
       image_array(sgc.path).each do |file_name|
         create_card_image(sgc, file_name)
       end
@@ -33,10 +30,9 @@ class CardImageLoadingService
   end
 
   def import_guide_card_images
-    @progressbar.total = GuideCard.all.count
-    GuideCard.all.each_with_index do |gc, index|
-      progress_bar_random_color if (index % 100).zero?
-      @progressbar.increment
+    progressbar = progress_bar(GuideCard.count)
+    GuideCard.all.each do |gc|
+      progressbar.increment
       image_array(gc.path).each do |file_name|
         create_card_image(gc, file_name)
       end
@@ -68,7 +64,11 @@ class CardImageLoadingService
     ci.save
   end
 
-  def progress_bar_random_color
-    @progressbar.format = "%t: |\e[#{rand(91..97)}m%B\e[0m|"
+  def progress_bar(total)
+    ProgressBar.create(format: "\e[1;35m%t: |%B|\e[0m", total: total, output: progress_output)
+  end
+
+  def progress_output
+    ProgressBar::Outputs::Null if suppress_progress
   end
 end
