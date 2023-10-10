@@ -5,9 +5,10 @@ require 'ruby-progressbar/outputs/null'
 
 # Class for card image loading service
 class CardImageLoadingService
-  attr_reader :suppress_progress
+  attr_reader :logger, :suppress_progress
 
-  def initialize(suppress_progress: false)
+  def initialize(logger: nil, suppress_progress: false)
+    @logger = logger || Logger.new($stdout)
     @suppress_progress = suppress_progress
   end
 
@@ -16,7 +17,11 @@ class CardImageLoadingService
   end
 
   def import_disk(disk)
-    disk_array(disk).each do |file_name|
+    logger.info("Fetching disk #{disk} file list")
+    filenames = disk_array(disk)
+    progress = progress_bar(filenames.count)
+    filenames.each do |file_name|
+      progress.increment
       find_or_create_card_image(file_name)
     end
   end
@@ -45,7 +50,7 @@ class CardImageLoadingService
   end
 
   def progress_bar(total)
-    ProgressBar.create(format: "\e[1;35m%t: |%B|\e[0m", total:, output: progress_output)
+    ProgressBar.create(format: "%a %e %P% Loading: %c from %C", total: total, output: progress_output)
   end
 
   def progress_output

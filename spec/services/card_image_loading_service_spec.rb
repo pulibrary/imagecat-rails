@@ -3,7 +3,12 @@
 require 'rails_helper'
 
 describe CardImageLoadingService do
-  let(:card_image_loader) { described_class.new(suppress_progress: true) }
+  let(:card_image_loader) do
+    described_class.new(
+      logger: Logger.new(nil),
+      suppress_progress: true
+    )
+  end
   let(:guide_card_loader) do
     GuideCardLoadingService.new(
       csv_location: Rails.root.join('spec', 'fixtures', 'guide_card_fixture.csv'),
