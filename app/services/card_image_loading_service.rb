@@ -17,7 +17,7 @@ class CardImageLoadingService
   def import
     barrier = Async::Barrier.new
     Sync do
-      semaphore = Async::Semaphore.new(10, parent: barrier)
+      semaphore = Async::Semaphore.new(8, parent: barrier)
 
       (1..22).map do |disk|
         semaphore.async do
