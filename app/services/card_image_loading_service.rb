@@ -17,7 +17,7 @@ class CardImageLoadingService
   def import
     barrier = Async::Barrier.new
     Sync do
-      semaphore = Async::Semaphore.new(8, parent: barrier)
+      semaphore = Async::Semaphore.new(22, parent: barrier)
 
       (1..22).map do |disk|
         semaphore.async do
@@ -33,9 +33,10 @@ class CardImageLoadingService
     logger.info("Fetching disk #{disk} file list")
     filenames = disk_array(disk)
     progress_bar.total += filenames.count
-    Sync do |task|
+    Sync do
+      semaphore = Async::Semaphore.new(10_000)
       filenames.map do |file_name|
-        task.async do
+        semaphore.async do
           progress_bar.increment
           find_or_create_card_image(file_name)
         end
