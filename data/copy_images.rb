@@ -11,7 +11,14 @@ require 'fileutils'
 source = ARGV[0]
 destination = ARGV[1]
 puts "Copying files from #{source} to #{destination}"
-files = Dir[File.join(source, '**/*.tiff')]
+# If a directory is passed then we're synchronizing.
+if File.directory?(source)
+  files = Dir[File.join(source, '**/*.tiff')]
+else
+  # If it's a file, then assume it holds a newline-delimited list of files to
+  # synchronize.
+  files = File.read(source).split("\n")
+end
 sync_dir = File.join(source, 'for_aws_sync')
 Dir.mkdir(sync_dir)
 files.each do |file_name|
