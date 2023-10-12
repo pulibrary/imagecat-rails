@@ -52,7 +52,8 @@ class CardImageLoadingService
       { path: path, image_name: file_name }
     end
     result = CardImage.insert_all(insert_slice)
-    progress_bar.progress += result.count
+    logger.info("Created #{result.count} rows")
+    progress_bar.progress += 1000
   end
 
   private
