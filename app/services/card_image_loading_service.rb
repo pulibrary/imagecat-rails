@@ -62,9 +62,11 @@ class CardImageLoadingService
 
   # returns something like
   # "2023-07-19 14:39:38       3422 imagecat-disk9-0091-A3037-1358.0110.tif\n2023-07-19 14:39:38       7010 imagecat-disk9-0091-A3037-1358.0111.tif\n"
+  # :nocov:
   def s3_disk_list(disk)
     `aws s3 ls s3://puliiif-production/imagecat-disk#{disk}-`
   end
+  # :nocov:
 
   def progress_bar
     @progress_bar ||= ProgressBar.create(format: '%a %e %P% Loading: %c from %C', output: progress_output, total: 0, title: 'Image import')
