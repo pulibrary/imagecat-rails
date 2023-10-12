@@ -18,30 +18,41 @@ class CardImageLoadingService
     barrier = Async::Barrier.new
     Sync do
       semaphore = Async::Semaphore.new(22, parent: barrier)
-
-      (1..22).map do |disk|
+      # Fetch all the files first - there's a lot, but not so many that it can't
+      # sit in memory, and async 22 makes this fast enough.
+      all_files = (1..22).map do |disk|
         semaphore.async do
-          import_disk(disk)
+          disk_array(disk)
         end
-      end.map(&:wait)
+      end.flat_map(&:wait)
+      progress_bar.total = all_files.count
+      import_files(all_files)
     ensure
       barrier.stop
     end
   end
 
-  def import_disk(disk)
-    logger.info("Fetching disk #{disk} file list")
-    filenames = disk_array(disk)
-    progress_bar.total += filenames.count
+  def import_files(all_files)
     Sync do
-      semaphore = Async::Semaphore.new(10_000)
-      filenames.map do |file_name|
+      # Insert 10 batches at a time.
+      semaphore = Async::Semaphore.new(10)
+      # insert_all in batches of 1000
+      all_files.each_slice(1000).map do |slice|
         semaphore.async do
-          progress_bar.increment
-          find_or_create_card_image(file_name)
+          import_slice(slice)
         end
       end.map(&:wait)
     end
+  end
+
+  def import_slice(slice)
+    # Create an array of hashes that represent what we want to insert.
+    insert_slice = slice.map do |file_name|
+      path = file_name.gsub('imagecat-disk', '').split('-')[0..-2].join('/')
+      { path: path, image_name: file_name }
+    end
+    result = CardImage.insert_all(insert_slice)
+    progress_bar.progress += result.count
   end
 
   private
@@ -49,6 +60,7 @@ class CardImageLoadingService
   # returns something like
   # ["imagecat-disk9-0091-A3037-1358.0110.tif", "imagecat-disk9-0091-A3037-1358.0111.tif"]
   def disk_array(disk)
+    logger.info("Fetching disk #{disk} file list")
     s3_disk_list(disk).split("\n").map(&:split).map(&:last)
   end
 
@@ -58,20 +70,8 @@ class CardImageLoadingService
     `aws s3 ls s3://puliiif-production/imagecat-disk#{disk}-`
   end
 
-  def find_or_create_card_image(file_name)
-    path = file_name.gsub('imagecat-disk', '').split('-')[0..-2].join('/')
-    ci = CardImage.find_by(path: path, image_name: file_name)
-    return if ci
-
-    CardImage.create(path: path, image_name: file_name)
-  end
-
   def progress_bar
     @progress_bar ||= ProgressBar.create(format: '%a %e %P% Loading: %c from %C', output: progress_output, total: 0, title: 'Image import')
-  end
-
-  def progress_bar_old(total)
-    ProgressBar.create(format: '%a %e %P% Loading: %c from %C', total: total, output: progress_output)
   end
 
   def progress_output
