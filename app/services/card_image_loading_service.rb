@@ -46,6 +46,7 @@ class CardImageLoadingService
   end
 
   def import_slice(slice)
+    logger.info("Importing slice")
     # Create an array of hashes that represent what we want to insert.
     insert_slice = slice.map do |file_name|
       path = file_name.gsub('imagecat-disk', '').split('-')[0..-2].join('/')
