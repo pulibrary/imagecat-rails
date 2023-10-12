@@ -26,27 +26,21 @@ class CardImageLoadingService
         end
       end.flat_map(&:wait)
       progress_bar.total = all_files.count
-      import_files(all_files, barrier)
+      progress_bar.progress = 0
+      import_files(all_files)
     ensure
       barrier.stop
     end
   end
 
-  def import_files(all_files, barrier)
-    Sync do
-      # Insert 10 batches at a time.
-      semaphore = Async::Semaphore.new(10, parent: barrier)
-      # insert_all in batches of 1000
-      all_files.each_slice(1000).map do |slice|
-        semaphore.async do
-          import_slice(slice)
-        end
-      end.map(&:wait)
+  def import_files(all_files)
+    # insert_all in batches of 1000
+    all_files.each_slice(1000) do |slice|
+      import_slice(slice)
     end
   end
 
   def import_slice(slice)
-    logger.info("Importing slice")
     # Create an array of hashes that represent what we want to insert.
     insert_slice = slice.map do |file_name|
       path = file_name.gsub('imagecat-disk', '').split('-')[0..-2].join('/')
@@ -54,7 +48,7 @@ class CardImageLoadingService
     end
     result = CardImage.insert_all(insert_slice)
     logger.info("Created #{result.count} rows")
-    progress_bar.progress += 1000
+    progress_bar.progress += slice.count
   end
 
   private
