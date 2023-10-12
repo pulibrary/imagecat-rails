@@ -26,16 +26,16 @@ class CardImageLoadingService
         end
       end.flat_map(&:wait)
       progress_bar.total = all_files.count
-      import_files(all_files)
+      import_files(all_files, barrier)
     ensure
       barrier.stop
     end
   end
 
-  def import_files(all_files)
+  def import_files(all_files, barrier)
     Sync do
       # Insert 10 batches at a time.
-      semaphore = Async::Semaphore.new(10)
+      semaphore = Async::Semaphore.new(10, parent: barrier)
       # insert_all in batches of 1000
       all_files.each_slice(1000).map do |slice|
         semaphore.async do
