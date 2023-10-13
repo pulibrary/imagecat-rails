@@ -27,3 +27,7 @@ Metrics/AbcSize:
 
 Style/HashSyntax:
   EnforcedShorthandSyntax: never
+
+Rails/SkipsModelValidations:
+  Exclude:
+    - "app/services/card_image_loading_service.rb"

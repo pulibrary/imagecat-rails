@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_10_192642) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_12_212118) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,6 +19,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_10_192642) do
     t.text "image_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["image_name"], name: "index_card_images_on_image_name", unique: true
   end
 
   create_table "guide_cards", force: :cascade do |t|
