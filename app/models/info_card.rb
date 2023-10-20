@@ -1,0 +1,2 @@
+class InfoCard < ApplicationRecord
+end
