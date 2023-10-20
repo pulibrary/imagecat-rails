@@ -15,4 +15,9 @@ namespace :import do
   task import_card_images: :environment do
     CardImageLoadingService.new.import
   end
+
+  desc 'Import InfoCard data'
+  task import_info_cards: :environment do
+    InfoCardLoadingService.new.import
+  end  
 end
