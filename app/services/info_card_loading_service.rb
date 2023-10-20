@@ -4,7 +4,7 @@
 class InfoCardLoadingService
   def import
     data_dir = Rails.root.join('data', 'info_files')
-    Dir.glob('*.html', base: data_dir).each do |file_name, _card|
+    Dir.glob('*.html', base: data_dir).each do |file_name|
       file_path = File.join(data_dir, file_name)
       html = File.read(file_path).strip
       InfoCard.find_or_create_by(path: path_for(file_name), html: fragment_for(html))
