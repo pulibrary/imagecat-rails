@@ -29,11 +29,11 @@ class GuideCardLoadingService
   private
 
   def import_guide_card(guide_card)
-    gc = GuideCard.new
-    gc.id = guide_card[0]
-    gc.heading = guide_card[1]
-    gc.sortid = guide_card[2]
-    gc.path = guide_card[3]
-    gc.save
+    GuideCard.find_or_create_by(
+      id: guide_card[0],
+      heading: guide_card[1],
+      sortid: guide_card[2],
+      path: guide_card[3]
+    )
   end
 end
