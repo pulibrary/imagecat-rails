@@ -19,5 +19,5 @@ namespace :import do
   desc 'Import InfoCard data'
   task import_info_cards: :environment do
     InfoCardLoadingService.new.import
-  end  
+  end
 end
