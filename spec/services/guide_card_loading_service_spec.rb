@@ -16,7 +16,7 @@ describe GuideCardLoadingService do
   it 'imports all data from the CSV file' do
     expect(GuideCard.count).to eq 0
     gcls.import
-    expect(GuideCard.count).to eq 12
+    expect(GuideCard.count).to eq 13
   end
 
   it 'displays ruby-progress bar during import' do

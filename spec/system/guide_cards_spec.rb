@@ -47,6 +47,14 @@ RSpec.describe 'GuideCards', type: :system, js: true do
         expect(page).not_to have_text 'No cards found'
       end
     end
+    context 'when it is an InfoCard' do
+      it 'displays the .html snippet' do
+        InfoCardLoadingService.new.import
+        visit '/guide_cards/29378'
+        expect(page).to have_content 'Because the United States file is so long'
+        expect(page).not_to have_content '<p>'
+      end
+    end
   end
 
   context 'when a GuideCard has no SubGuide cards' do

@@ -29,12 +29,12 @@ class SubGuideLoadingService
   private
 
   def import_sub_guide_card(card)
-    sgc = SubGuideCard.new
-    sgc.id = card[0]
-    sgc.heading = card[1]
-    sgc.sortid = card[2]
-    sgc.parentid = card[3]
-    sgc.path = card[4]
-    sgc.save
+    SubGuideCard.find_or_create_by(
+      id: card[0],
+      heading: card[1],
+      sortid: card[2],
+      parentid: card[3],
+      path: card[4]
+    )
   end
 end

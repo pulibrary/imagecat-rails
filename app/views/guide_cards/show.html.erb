@@ -10,3 +10,7 @@
 <% end %>
 
 <%= render "shared/card_image_list" %> 
+
+<% @info_cards.each do |info| %>
+  <%= info.html.html_safe %>
+<% end %> 

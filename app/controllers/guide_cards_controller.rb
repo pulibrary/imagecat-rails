@@ -25,5 +25,6 @@ class GuideCardsController < ApplicationController
     @sub_guide_cards = @guide_card.children
     @card_images = CardImage.where(path: @guide_card.path).page(params[:page])
     @total_cards = CardImage.where(path: @guide_card.path).count
+    @info_cards = InfoCard.where(path: @guide_card.path)
   end
 end
