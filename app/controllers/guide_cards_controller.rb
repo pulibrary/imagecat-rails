@@ -11,13 +11,23 @@ class GuideCardsController < ApplicationController
   end
 
   def search
-    @match = GuideCard.search_result(params[:search_term])
+    @match = GuideCard.search_result(sanitize_search_term)
     @guide_cards =
       if params[:page].present?
         GuideCard.order(:id).page(params[:page])
       else
         GuideCard.order(:id).page(@match.index_page)
       end
+  end
+
+  # This method sets an empty string to ***** in the search box so that
+  # you do not hit an error page if no search term is entered.
+  def sanitize_search_term
+    if params[:search_term] == ''
+      '*****'
+    else
+      params[:search_term]
+    end
   end
 
   def show

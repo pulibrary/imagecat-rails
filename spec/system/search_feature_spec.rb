@@ -37,5 +37,10 @@ RSpec.describe 'Search Feature', type: :system, js: true do
       click_on 'Go'
       expect(page).to have_link('* Aaron')
     end
+    it 'redirects user to first page of index if no search entered' do
+      visit '/'
+      click_on 'Go'
+      expect(page).to have_link('*****')
+    end
   end
 end
