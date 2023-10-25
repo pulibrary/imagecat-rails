@@ -37,5 +37,13 @@ RSpec.describe 'Search Feature', type: :system, js: true do
       click_on 'Go'
       expect(page).to have_link('* Aaron')
     end
+    it 'redirects user to first page of index if no search entered' do
+      visit '/'
+      click_on 'Go'
+      # With no string entered in search bar, results should return as if you had
+      # entered '*****' to get you to the first page of the GuideCard index.
+      # redirect_to guide_cards.index_page(search_term: '*****')
+      expect(page).to have_link('*****')
+    end
   end
 end
