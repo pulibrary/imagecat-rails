@@ -1,13 +1,14 @@
 {
   "devDependencies": {
-    "vite": "^4.5.2",
-    "vite-plugin-ruby": "^3.2.0"
+    "@vitejs/plugin-vue": "^5.0.1",
+    "vite": "^5.0.0",
+    "vite-plugin-ruby": "^5.0.0"
   },
   "dependencies": {
-    "lux-design-system": "^4.3.0",
-    "sass": "^1.62.0",
-    "vue": "^2.6.10",
-    "vue-loader": "^15.7.0",
-    "vue-template-compiler": "^2.6.10"
+    "lux-design-system": "^5.0.0-beta.6",
+    "postcss-import": "^15.1.0",
+    "sass": "^1.69.5",
+    "vue": "^3.4.0",
+    "vue-loader": "^15.7.0"
   }
 }
