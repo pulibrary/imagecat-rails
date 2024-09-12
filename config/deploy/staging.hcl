@@ -23,7 +23,7 @@ job "imagecat-staging" {
       }
     }
     task "webserver" {
-      driver = "docker"
+      driver = "podman"
       config {
         image = "ghcr.io/pulibrary/imagecat-rails:${ var.branch_or_sha }"
         ports = ["http"]
