@@ -2,10 +2,10 @@ variable "branch_or_sha" {
   type = string
   default = "main"
 }
-job "imagecat-staging" {
+job "imagecat-production" {
   region = "global"
   datacenters = ["dc1"]
-  node_pool = "staging"
+  node_pool = "production"
   type = "service"
   group "web" {
     count = 2
@@ -34,19 +34,19 @@ job "imagecat-staging" {
         env = true
         change_mode = "restart"
         data = <<EOF
-        {{- with nomadVar "nomad/jobs/imagecat-staging" -}}
+        {{- with nomadVar "nomad/jobs/imagecat-production" -}}
         SECRET_KEY_BASE = '{{ .SECRET_KEY_BASE }}'
         APP_DB = {{ .DB_NAME }}
         APP_DB_USERNAME = {{ .DB_USER }}
         APP_DB_PASSWORD = {{ .DB_PASSWORD }}
         APP_DB_HOST = {{ .POSTGRES_HOST }}
-        APPLICATION_HOST = 'imagecat-staging.princeton.edu'
+        APPLICATION_HOST = 'imagecat.princeton.edu'
         APPLICATION_HOST_PROTOCOL = 'https'
         APPLICATION_PORT = '443'
         AWS_ACCESS_KEY_ID = {{ .AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY = {{ .AWS_SECRET_ACCESS_KEY }}
         AWS_DEFAULT_REGION = 'us-east-1'
-        RAILS_ENV = 'staging'
+        RAILS_ENV = 'production'
         {{- end -}}
         EOF
       }
