@@ -98,8 +98,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           WORKFLOW_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-          SCANNER_OUTPUTS: ${{ steps.scanner.outputs.results }}
-        run: echo "${{ env.SCANNER_OUTPUTS }}"
+        run: echo "${{ steps.scanner.outputs.results }}"
       - name: Find Comment for scan
         if: github.event_name == 'pull_request'
         uses: peter-evans/find-comment@v3
@@ -111,15 +110,13 @@ jobs:
       - name: Create or update comment
         if: github.event_name == 'pull_request'
         uses: peter-evans/create-or-update-comment@v4
-        env:
-          SCANNER_OUTPUTS: ${{ steps.scanner.outputs.results }}
         with:
           comment-id: ${{ steps.fc.outputs.comment-id }}
           issue-number: ${{ github.event.pull_request.number }}
           body: |
             ## Container Scanning Status: ${{ steps.runscanner.outcome != 'success' && '❌ Failure' || '✅ Success' }}
             ```
-            ${{ env.SCANNER_OUTPUTS }}
+            ${{ steps.scanner.outputs.results }}
             ```
           edit-mode: replace
       - name: Create issue
