@@ -1,4 +1,4 @@
-ruby 3.2.0
+ruby 3.2.5
 awscli 2.11.24
 yarn 1.22.10
 nodejs 18.18.0
