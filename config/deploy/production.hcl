@@ -29,6 +29,10 @@ job "imagecat-production" {
         ports = ["http"]
         force_pull = true
       }
+      resources {
+        cpu    = 1000
+        memory = 500
+      }
       template {
         destination = "${NOMAD_SECRETS_DIR}/env.vars"
         env = true
