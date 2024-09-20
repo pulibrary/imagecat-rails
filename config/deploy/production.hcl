@@ -7,6 +7,12 @@ job "imagecat-production" {
   datacenters = ["dc1"]
   node_pool = "production"
   type = "service"
+  # Spread all instances across hosts.
+  # By default Nomad uses as few resources as possible, but we want a host to be
+  # able to go down in prod.
+  spread {
+    attribute =  "${node.unique.name}"
+  }
   group "web" {
     count = 2
     network {
