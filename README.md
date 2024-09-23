@@ -35,13 +35,13 @@ Run the `bin/rails server` or `rails s` command, then in a browser connect to [l
 
 ## Deploying 
 
-You may use Capistrano on the command line. 
+You can deploy from the command line:
 
-`BRANCH=branch_name bundle exec cap staging deploy`
+`BRANCH=branch_name ./bin/deploy staging`
 
-`BRANCH=branch_name bundle exec cap production deploy`
+## Testing Production Install
 
-Alternatively, you may deploy from [ansible-tower](https://ansible-tower.princeton.edu/).
+You can test the docker container by running `docker compose up` and going to `http://localhost:3000`
 
 ## How to load data 
 
