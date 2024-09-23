@@ -25,6 +25,7 @@ commands:
 orbs:
   browser-tools: circleci/browser-tools@1.4.8
   coveralls: coveralls/coveralls@1.0.6
+  node: circleci/node@5.0.2
 jobs:
   build:
     working_directory: ~/rails_template
@@ -36,6 +37,9 @@ jobs:
     steps:
       - checkout
       - run: sudo apt update && sudo apt install postgresql-client libmsgpack-dev
+      - node/install:
+          install-yarn: true
+          node-version: '22.9.0'
       - install_dependencies
       - persist_to_workspace:
           root: &root '~/rails_template'
@@ -66,6 +70,9 @@ jobs:
           at: *root
       - browser-tools/install-chrome
       - browser-tools/install-chromedriver
+      - node/install:
+          install-yarn: true
+          node-version: '22.9.0'
       - run:
           name: Wait for PostgreSQL
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
