@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  mount HealthMonitor::Engine, at: '/'
+
   root 'welcome#index'
   get '/welcome/index'
   get '/filing_rules', to: 'welcome#filing_rules'
