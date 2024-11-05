@@ -17,7 +17,7 @@ job "imagecat-staging" {
       check {
         type = "http"
         port = "http"
-        path = "/"
+        path = "/health.json"
         interval = "10s"
         timeout = "1s"
       }
