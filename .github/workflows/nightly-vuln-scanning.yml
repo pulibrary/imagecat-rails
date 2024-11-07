@@ -1,4 +1,8 @@
 name: Run nightly vulnerability check
+permissions:
+  issues: write
+  pull-requests: write
+  discussions: write
 
 on:
   schedule:
