@@ -3,20 +3,32 @@
   "extends": [
     "config:recommended",
     "group:allNonMajor",
-    "regexManagers:dockerfileVersions"
+    "customManagers:dockerfileVersions"
   ],
-  "enabledManagers": ["asdf", "bundler", "circleci", "docker-compose", "dockerfile", "nodenv", "npm", "regex"],
+  "enabledManagers": [
+    "asdf",
+    "bundler",
+    "circleci",
+    "docker-compose",
+    "dockerfile",
+    "nodenv",
+    "npm",
+    "custom.regex"
+  ],
   "packageRules": [
     {
       "matchDatasources": [
         "docker"
       ],
-      "matchPackagePatterns": ["postgres"],
-      "enabled": false
+      "enabled": false,
+      "matchPackageNames": [
+        "/postgres/"
+      ]
     }
   ],
-  "regexManagers": [
+  "customManagers": [
     {
+      "customType": "regex",
       "fileMatch": [
         "^.tool-versions$"
       ],
@@ -26,6 +38,7 @@
       "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
     },
     {
+      "customType": "regex",
       "fileMatch": [
         "^.circleci/config.yml$"
       ],
@@ -36,11 +49,12 @@
       "depNameTemplate": "node"
     },
     {
+      "customType": "regex",
       "fileMatch": [
         "^.circleci/config.yml$"
       ],
       "matchStrings": [
-        "cimg\/ruby:(?<currentValue>.*?)-"
+        "cimg/ruby:(?<currentValue>.*?)-"
       ],
       "datasourceTemplate": "ruby-version",
       "depNameTemplate": "ruby"
