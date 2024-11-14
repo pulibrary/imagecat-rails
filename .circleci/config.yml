@@ -24,7 +24,7 @@ commands:
             - ~/.cache/yarn
 orbs:
   browser-tools: circleci/browser-tools@1.4.8
-  coveralls: coveralls/coveralls@1.0.6
+  coveralls: coveralls/coveralls@2.2.5
   node: circleci/node@5.0.2
 jobs:
   build:
