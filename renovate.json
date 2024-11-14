@@ -32,7 +32,7 @@
       "matchStrings": [
         "node-version:.*'(?<currentValue>.*?)'"
       ],
-      "datasourceTempalte": "node-version",
+      "datasourceTemplate": "node-version",
       "depNameTemplate": "node"
     },
     {
@@ -42,7 +42,7 @@
       "matchStrings": [
         "cimg\/ruby:(?<currentValue>.*?)-"
       ],
-      "datasourceTempalte": "ruby-version",
+      "datasourceTemplate": "ruby-version",
       "depNameTemplate": "ruby"
     }
   ],
