@@ -13,13 +13,6 @@
       ],
       "matchPackagePatterns": ["postgres"],
       "enabled": false
-    },
-    {
-      "matchDatasources": [
-        "docker"
-      ],
-      "matchPackageNames": ["node"],
-      "versioning": 
     }
   ],
   "prHourlyLimit": 3

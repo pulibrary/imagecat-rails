@@ -1,6 +1,7 @@
 # syntax = docker/dockerfile:1
 
 # Make sure RUBY_VERSION matches the Ruby version in .ruby-version and Gemfile
+# renovate: datasource=ruby-version depName=ruby
 ARG RUBY_VERSION=3.3.6
 FROM ruby:$RUBY_VERSION-slim as base
 
@@ -29,7 +30,9 @@ RUN apt-get update -qq && \
 FROM prebuild as node
 
 # Install JavaScript dependencies
+# renovate: datasource=node-version depName=node
 ARG NODE_VERSION=22.9.0
+# renovate: datasource=npm depName=yarn versioning=npm
 ARG YARN_VERSION=1.22.21
 ENV PATH=/usr/local/node/bin:$PATH
 RUN curl -sL https://github.com/nodenv/node-build/archive/master.tar.gz | tar xz -C /tmp/ && \
