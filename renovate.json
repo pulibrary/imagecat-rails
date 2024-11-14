@@ -4,6 +4,9 @@
     "config:recommended",
     "group:allNonMajor"
   ],
+  "docker-actions": {
+    "enabled": false
+  },
   "packageRules": [
     {
       "matchDatasources": [
