@@ -24,6 +24,26 @@
         "\\s+(?<currentValue>\\S+)\\s*#\\s*datasource=(?<datasource>\\S+)\\s+depName=(?<depName>\\S+)(\\s+versioning=(?<versioning>\\S+))?(\\s+registryUrl=(?<registryUrl>\\S+))?\\s*\\n"
       ],
       "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
+    },
+    {
+      "fileMatch": [
+        "^.circleci/config.yml$"
+      ],
+      "matchStrings": [
+        "node-version:.*'(?<currentValue>.*?)'"
+      ],
+      "datasourceTempalte": "node-version",
+      "depNameTemplate": "node"
+    },
+    {
+      "fileMatch": [
+        "^.circleci/config.yml$"
+      ],
+      "matchStrings": [
+        "cimg\/ruby:(?<currentValue>.*?)-"
+      ],
+      "datasourceTempalte": "ruby-version",
+      "depNameTemplate": "ruby"
     }
   ],
   "prHourlyLimit": 3
