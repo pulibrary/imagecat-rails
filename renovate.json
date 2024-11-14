@@ -5,7 +5,7 @@
     "group:allNonMajor",
     "regexManagers:dockerfileVersions"
   ],
-  "enabledManagers": ["asdf", "bundler", "circleci", "docker-compose", "dockerfile", "nodenv", "npm"],
+  "enabledManagers": ["asdf", "bundler", "circleci", "docker-compose", "dockerfile", "nodenv", "npm", "regex"],
   "packageRules": [
     {
       "matchDatasources": [
