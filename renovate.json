@@ -13,5 +13,6 @@
       "matchPackagePatterns": ["postgres"],
       "enabled": false
     }
-  ]
+  ],
+  "prHourlyLimit": 3
 }
