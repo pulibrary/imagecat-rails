@@ -9,7 +9,7 @@
     "postcss-import": "^15.1.0",
     "sass": "^1.69.5",
     "vue": "^3.4.0",
-    "vue-loader": "^15.7.0"
+    "vue-loader": "^17.0.0"
   },
   "packageManager": "yarn@1.22.22",
   "scripts": {
