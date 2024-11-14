@@ -6,7 +6,7 @@
   },
   "dependencies": {
     "lux-design-system": "^5.0.0-beta.6",
-    "postcss-import": "^15.1.0",
+    "postcss-import": "^16.0.0",
     "sass": "^1.69.5",
     "vue": "^3.4.0",
     "vue-loader": "^15.7.0"
