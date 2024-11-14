@@ -4,9 +4,7 @@
     "config:recommended",
     "group:allNonMajor"
   ],
-  "docker-actions": {
-    "enabled": false
-  },
+  "enabledManagers": ["asdf", "bundler", "circleci", "docker-compose", "dockerfile", "nodenv", "npm"],
   "packageRules": [
     {
       "matchDatasources": [
