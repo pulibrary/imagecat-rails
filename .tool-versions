@@ -1,4 +1,4 @@
 ruby 3.3.6
-awscli 2.21.1
+awscli 2.21.2
 yarn 1.22.22 # datasource=npm depName=yarn versioning=npm
 nodejs 22.11.0
