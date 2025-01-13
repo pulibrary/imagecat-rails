@@ -8,6 +8,7 @@ gem 'rails', '~> 8.0.0'
 
 gem 'async'
 gem 'bcrypt_pbkdf'
+gem 'csv'
 gem 'ed25519'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
