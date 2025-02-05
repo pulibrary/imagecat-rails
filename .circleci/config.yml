@@ -23,9 +23,9 @@ commands:
           paths:
             - ~/.cache/yarn
 orbs:
-  browser-tools: circleci/browser-tools@1.5.0
+  browser-tools: circleci/browser-tools@1.5.1
   coveralls: coveralls/coveralls@1.0.7
-  node: circleci/node@7.0.0
+  node: circleci/node@7.1.0
 jobs:
   build:
     working_directory: ~/rails_template
