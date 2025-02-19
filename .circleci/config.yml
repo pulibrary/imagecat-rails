@@ -23,7 +23,7 @@ commands:
           paths:
             - ~/.cache/yarn
 orbs:
-  browser-tools: circleci/browser-tools@1.5.1
+  browser-tools: circleci/browser-tools@1.5.2
   coveralls: coveralls/coveralls@1.0.7
   node: circleci/node@7.1.0
 jobs:
@@ -31,7 +31,7 @@ jobs:
     working_directory: ~/rails_template
     docker:
       - &ruby_docker
-        image: cimg/ruby:3.4.1-browsers
+        image: cimg/ruby:3.4.2-browsers
         environment:
           RAILS_ENV: test
     steps:
@@ -39,7 +39,7 @@ jobs:
       - run: sudo apt update && sudo apt install postgresql-client libmsgpack-dev
       - node/install:
           install-yarn: true
-          node-version: '22.13.1'
+          node-version: '22.14.0'
       - install_dependencies
       - persist_to_workspace:
           root: &root '~/rails_template'
@@ -72,7 +72,7 @@ jobs:
       - browser-tools/install-chromedriver
       - node/install:
           install-yarn: true
-          node-version: '22.13.1'
+          node-version: '22.14.0'
       - run:
           name: Wait for PostgreSQL
           command: dockerize -wait tcp://localhost:5432 -timeout 1m

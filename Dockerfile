@@ -2,7 +2,7 @@
 
 # Make sure RUBY_VERSION matches the Ruby version in .ruby-version and Gemfile
 # renovate: datasource=ruby-version depName=ruby
-ARG RUBY_VERSION=3.4.1
+ARG RUBY_VERSION=3.4.2
 FROM ruby:$RUBY_VERSION-slim as base
 
 # Rails app lives here
@@ -24,14 +24,14 @@ FROM base as prebuild
 
 # Install packages needed to build gems and node modules
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential curl libpq-dev node-gyp pkg-config python-is-python3
+    apt-get install --no-install-recommends -y build-essential curl libpq-dev node-gyp pkg-config python-is-python3 libyaml-dev
 
 
 FROM prebuild as node
 
 # Install JavaScript dependencies
 # renovate: datasource=node-version depName=node
-ARG NODE_VERSION=22.13.1
+ARG NODE_VERSION=22.14.0
 # renovate: datasource=npm depName=yarn versioning=npm
 ARG YARN_VERSION=1.22.22
 ENV PATH=/usr/local/node/bin:$PATH
