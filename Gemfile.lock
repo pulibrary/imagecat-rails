@@ -148,7 +148,7 @@ GEM
     fiber-storage (1.0.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
-    health-monitor-rails (12.8.0)
+    health-monitor-rails (13.0.0)
       railties (>= 6.1)
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
@@ -421,7 +421,7 @@ DEPENDENCIES
   debug
   dockerfile-rails (>= 1.6)
   ed25519
-  health-monitor-rails (~> 12.3)
+  health-monitor-rails (~> 13.0)
   importmap-rails
   jbuilder
   kaminari
