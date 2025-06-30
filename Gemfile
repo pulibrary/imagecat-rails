@@ -62,7 +62,7 @@ gem 'bootsnap', require: false
 # gem "image_processing", "~> 1.2"
 
 group :development, :test do
-  gem 'coveralls_reborn', '~> 0.28.0', require: false
+  gem 'coveralls_reborn', '~> 0.29.0', require: false
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'capistrano', '~> 3.10', require: false
   gem 'capistrano-passenger', require: false
