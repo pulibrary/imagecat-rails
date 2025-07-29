@@ -68,8 +68,8 @@ jobs:
     steps:
       - attach_workspace:
           at: *root
-      - browser-tools/install-chrome
-      - browser-tools/install-chromedriver
+      - browser-tools/install_chrome
+      - browser-tools/install_chromedriver
       - node/install:
           install-yarn: true
           node-version: '22.17.0'
