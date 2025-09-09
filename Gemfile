@@ -76,7 +76,7 @@ group :development, :test do
   gem 'rubocop-rails', require: false
   gem 'selenium-webdriver'
   gem 'simplecov'
-  gem 'simplecov-lcov', '~> 0.8.0'
+  gem 'simplecov-lcov', '~> 0.9.0'
 end
 
 group :development do
