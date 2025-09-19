@@ -2,7 +2,7 @@
 
 # Make sure RUBY_VERSION matches the Ruby version in .ruby-version and Gemfile
 # renovate: datasource=ruby-version depName=ruby
-ARG RUBY_VERSION=3.4.5
+ARG RUBY_VERSION=3.4.6
 FROM ruby:$RUBY_VERSION-slim as base
 
 # Rails app lives here
