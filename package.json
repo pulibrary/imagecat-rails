@@ -1,8 +1,8 @@
 {
   "devDependencies": {
     "@vitejs/plugin-vue": "^6.0.0",
-    "vite": "^7.0.0",
-    "vite-plugin-ruby": "^5.0.0"
+    "vite": "^5.0.0",
+    "vite-plugin-ruby": ">5.1.2 || <5.1.2"
   },
   "dependencies": {
     "lux-design-system": "^6.0.0",
@@ -14,5 +14,6 @@
   "packageManager": "yarn@1.22.22",
   "scripts": {
     "build": "vite build --outDir public"
-  }
+  },
+  "type": "module"
 }
