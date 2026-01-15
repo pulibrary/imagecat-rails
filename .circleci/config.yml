@@ -56,7 +56,7 @@ jobs:
     working_directory: ~/rails_template
     docker:
       - &ruby_docker
-        image: cimg/ruby:3.4.8-browsers
+        image: cimg/ruby:4.0.1-browsers
         environment:
           RAILS_ENV: test
     steps:
