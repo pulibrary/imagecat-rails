@@ -1,16 +1,41 @@
 version: 2.1
 commands:
   install_dependencies:
+    description: "Install correct version of bundler and load from cache or bundle install"
     steps:
-      - run: gem install bundler -v '2.3.11'
-      - run: cp Gemfile.lock Gemfile.lock.bak
+      - run:
+          name: Configure Bundler
+          command: |
+            echo 'export BUNDLER_VERSION=$(cat Gemfile.lock | tail -1 | tr -d " ")' >> $BASH_ENV
+            source $BASH_ENV
+            gem install bundler
+
+      # Which version of bundler?
+      - run:
+          name: Which bundler?
+          command: bundle -v
+
+      # Which version of bundler?
+      - run:
+          name: Set bundle vendor
+          command: bundle config set path './vendor/bundle'
+
+      # Restore bundle cache
       - restore_cache:
-          key: &gem_key rails_template-cimg-{{ checksum "Gemfile.lock.bak" }}
-      - run: bundle install --path ./vendor/bundle
+          keys:
+            - imagecat-bundle-v5-{{ checksum "Gemfile.lock" }}
+            - imagecat-bundle-v5-
+
+      - run:
+          name: Bundle Install
+          command: bundle check || bundle install
+
+      # Store bundle cache
       - save_cache:
-          key: *gem_key
+          key: imagecat-bundle-v5-{{ checksum "Gemfile.lock" }}
           paths:
-            - ./vendor/bundle
+            - vendor/bundle
+
       - restore_cache:
           name: Restore Yarn Package Cache
           key: &yarn_key rails_template-yarn-cimg-{{ checksum "yarn.lock" }}
