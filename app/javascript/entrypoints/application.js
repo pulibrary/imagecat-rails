@@ -6,9 +6,9 @@ const app = createApp({});
 const createMyApp = () => createApp(app);
 
 // create the LUX app and mount it to wrappers with class="lux"
-document.addEventListener ('DOMContentLoaded', () => {
+document.addEventListener ('turbo:load', () => {
   const elements = document.getElementsByClassName('lux')
   for(let i = 0; i < elements.length; i++){
     createMyApp().use(lux).mount(elements[i]);
   }
-}, { once: true })
+})
