@@ -90,6 +90,10 @@ group :development do
   # gem "spring"
 end
 
+group :test do
+  gem 'axe-core-rspec'
+end
+
 gem 'dockerfile-rails', '>= 1.6', group: :development
 
 gem 'health-monitor-rails', '~> 12.9'

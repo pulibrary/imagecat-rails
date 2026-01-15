@@ -6,10 +6,10 @@
 
 <p>Records are arranged alphabetically with authors, titles, and subjects interfiled.</p>
 
-<p> Please enter a search string to go to the guide card nearest that search string. </p>
 
+<%= label_tag "search_term", "Please enter a search string to go to the guide card nearest that search string." %>
 <%= form_tag "/search", method: "GET" do %>
-  <%= text_field_tag :search_term, params[:search_term] %> 
+  <%= text_field_tag :search_term, params[:search_term] %>
   <%= submit_tag "Go" %>
 <% end %>
 <hr>
