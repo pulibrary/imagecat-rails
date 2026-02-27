@@ -64,7 +64,7 @@ jobs:
       - run: sudo apt update && sudo apt install postgresql-client libmsgpack-dev
       - node/install:
           install-yarn: true
-          node-version: '24.13.0'
+          node-version: '24.13.1'
       - install_dependencies
       - persist_to_workspace:
           root: &root '~/rails_template'
@@ -97,7 +97,7 @@ jobs:
       - browser-tools/install_chromedriver
       - node/install:
           install-yarn: true
-          node-version: '24.13.0'
+          node-version: '24.13.1'
       - run:
           name: Wait for PostgreSQL
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
