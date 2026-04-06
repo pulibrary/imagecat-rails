@@ -2,7 +2,7 @@
   "devDependencies": {
     "@vitejs/plugin-vue": "^6.0.3",
     "vite": "^7.0.0",
-    "vite-plugin-ruby": "<5.1.4"
+    "vite-plugin-ruby": "<5.2.1"
   },
   "dependencies": {
     "lux-design-system": "^7.0.0",
