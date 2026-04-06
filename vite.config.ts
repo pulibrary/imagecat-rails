@@ -7,6 +7,11 @@ export default defineConfig({
     RubyPlugin(),
     vue()
   ],
+  css: {
+    lightningcss: {
+      errorRecovery: true
+    }
+  },
   resolve: {
     alias: {
       'vue': 'vue/dist/vue.esm-bundler',
