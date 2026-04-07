@@ -453,7 +453,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  async
+  async (= 2.36.0)
   axe-core-rspec
   bcrypt_pbkdf
   bootsnap
