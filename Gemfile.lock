@@ -467,7 +467,7 @@ DEPENDENCIES
   debug
   dockerfile-rails (>= 1.6)
   ed25519
-  health-monitor-rails (~> 12.9)
+  health-monitor-rails (= 12.9.0)
   importmap-rails
   jbuilder
   kaminari
@@ -476,7 +476,7 @@ DEPENDENCIES
   pry-byebug
   puma (~> 7.0)
   rack-mini-profiler
-  rails (~> 8.1.0)
+  rails (= 8.1.2)
   rspec-rails
   rubocop-rails
   ruby-progressbar
