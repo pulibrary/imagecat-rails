@@ -15,6 +15,9 @@
     "npm",
     "custom.regex"
   ],
+  "lockFileMaintenance": {
+    "enabled": true
+  },
   "minimumReleaseAge": "14 days",
   "packageRules": [
     {
