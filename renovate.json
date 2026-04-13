@@ -39,8 +39,8 @@
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": [
-        "^.tool-versions$"
+      "managerFilePatterns": [
+        "/^.tool-versions$/"
       ],
       "matchStrings": [
         "\\s+(?<currentValue>\\S+)\\s*#\\s*datasource=(?<datasource>\\S+)\\s+depName=(?<depName>\\S+)(\\s+versioning=(?<versioning>\\S+))?(\\s+registryUrl=(?<registryUrl>\\S+))?\\s*\\n"
@@ -49,8 +49,8 @@
     },
     {
       "customType": "regex",
-      "fileMatch": [
-        "^.circleci/config.yml$"
+      "managerFilePatterns": [
+        "/^.circleci/config.yml$/"
       ],
       "matchStrings": [
         "node-version:.*'(?<currentValue>.*?)'"
@@ -60,8 +60,8 @@
     },
     {
       "customType": "regex",
-      "fileMatch": [
-        "^.circleci/config.yml$"
+      "managerFilePatterns": [
+        "/^.circleci/config.yml$/"
       ],
       "matchStrings": [
         "cimg/ruby:(?<currentValue>.*?)-"
