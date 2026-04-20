@@ -41,7 +41,7 @@ commands:
           key: &yarn_key rails_template-yarn-cimg-{{ checksum "yarn.lock" }}
       - run:
           name: Install NPM Dependencies via Yarn
-          command: yarn install --frozen-lockfile
+          command: yarn install --frozen-lockfile --ignore-scripts
       - save_cache:
           name: Save Yarn Package Cache
           key: *yarn_key
