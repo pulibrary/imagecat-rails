@@ -80,7 +80,7 @@ GEM
     airbrussh (1.6.1)
       sshkit (>= 1.6.1, != 1.7.0)
     ast (2.4.3)
-    async (2.38.1)
+    async (2.39.0)
       console (~> 1.29)
       fiber-annotation
       io-event (~> 1.11)
@@ -460,7 +460,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  async (= 2.38.1)
+  async (= 2.39.0)
   axe-core-rspec
   bcrypt_pbkdf
   bootsnap
