@@ -56,7 +56,7 @@ jobs:
     working_directory: ~/rails_template
     docker:
       - &ruby_docker
-        image: cimg/ruby:4.0.3-browsers
+        image: cimg/ruby:4.0.5-browsers
         environment:
           RAILS_ENV: test
     steps:
@@ -64,7 +64,7 @@ jobs:
       - run: sudo apt update && sudo apt install postgresql-client libmsgpack-dev
       - node/install:
           install-yarn: true
-          node-version: '24.15.0'
+          node-version: '24.16.0'
       - install_dependencies
       - persist_to_workspace:
           root: &root '~/rails_template'
@@ -97,7 +97,7 @@ jobs:
       - browser-tools/install_chromedriver
       - node/install:
           install-yarn: true
-          node-version: '24.15.0'
+          node-version: '24.16.0'
       - run:
           name: Wait for PostgreSQL
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
