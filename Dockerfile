@@ -73,7 +73,7 @@ FROM base
 
 # Install packages needed for deployment
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y curl nginx postgresql-client ruby-foreman && \
+    apt-get install --no-install-recommends -y curl nginx postgresql-client && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # configure nginx
