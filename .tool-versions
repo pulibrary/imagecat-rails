@@ -1,4 +1,4 @@
 ruby 4.0.6
-awscli 2.36.14
+awscli 2.36.19
 yarn 1.22.22 # datasource=npm depName=yarn versioning=npm
-nodejs 24.18.1
+nodejs 24.19.0
