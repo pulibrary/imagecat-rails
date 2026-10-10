@@ -4,9 +4,9 @@ source 'https://gem.coop/'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem 'rails', '8.1.3.1'
+gem 'rails', '8.1.4'
 
-gem 'async', '2.45.1'
+gem 'async', '2.46.0'
 gem 'bcrypt_pbkdf'
 gem 'csv'
 gem 'ed25519'
