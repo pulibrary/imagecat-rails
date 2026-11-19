@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-source 'https://gem.coop/'
+source 'https://rubygems.org', cooldown: 4
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
