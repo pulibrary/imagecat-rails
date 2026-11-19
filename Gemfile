@@ -4,7 +4,7 @@ source 'https://rubygems.org', cooldown: 4
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem 'rails', '8.1.4'
+gem 'rails', '8.1.4.1'
 
 gem 'async', '2.46.0'
 gem 'bcrypt_pbkdf'
