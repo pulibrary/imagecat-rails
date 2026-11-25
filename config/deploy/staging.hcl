@@ -28,7 +28,7 @@ job "imagecat-staging" {
     task "webserver" {
       driver = "docker"
       config {
-        image = "ghcr.io/pulibrary/imagecat-rails:${ var.branch_or_sha }"
+        image = "ghcr.io/pulibrary/imagecat-rails:sha-${ var.branch_or_sha }"
         ports = ["http"]
         force_pull = true
       }
